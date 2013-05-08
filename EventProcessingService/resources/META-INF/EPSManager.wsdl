@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://core.eps.envision.ifgi.de" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://core.eps.envision.ifgi.de">
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://core.eps.envision.ifgi.de" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="start">
+    <complexType/>
+   </element>
+   <element name="startResponse">
+    <complexType>
+     <sequence>
+      <element name="startReturn" type="xs:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="stop">
+    <complexType/>
+   </element>
+   <element name="stopResponse">
+    <complexType>
+     <sequence>
+      <element name="stopReturn" type="xs:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="restart">
+    <complexType/>
+   </element>
+   <element name="restartResponse">
+    <complexType>
+     <sequence>
+      <element name="restartReturn" type="xs:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registerStatement">
+    <complexType>
+     <sequence>
+      <element name="stm" type="xs:string"/>
+      <element name="fullNameEventType" type="xs:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registerStatementResponse">
+    <complexType>
+     <sequence>
+      <element name="registerStatementReturn" type="xs:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="registerStatementRequest">
+
+      <wsdl:part element="ns:registerStatement" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerStatementResponse">
+
+      <wsdl:part element="ns:registerStatementResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartResponse">
+
+      <wsdl:part element="ns:restartResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startRequest">
+
+      <wsdl:part element="ns:start" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startResponse">
+
+      <wsdl:part element="ns:startResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopRequest">
+
+      <wsdl:part element="ns:stop" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartRequest">
+
+      <wsdl:part element="ns:restart" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopResponse">
+
+      <wsdl:part element="ns:stopResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EPSManager">
+
+      <wsdl:operation name="start">
+
+         <wsdl:input message="ns:startRequest" name="startRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="ns:startResponse" name="startResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stop">
+
+         <wsdl:input message="ns:stopRequest" name="stopRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="ns:stopResponse" name="stopResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restart">
+
+         <wsdl:input message="ns:restartRequest" name="restartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="ns:restartResponse" name="restartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerStatement">
+
+         <wsdl:input message="ns:registerStatementRequest" name="registerStatementRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="ns:registerStatementResponse" name="registerStatementResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EPSManagerSoapBinding" type="ns:EPSManager">
+
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="start">
+
+         <soap:operation soapAction=""/>
+
+         <wsdl:input name="startRequest">
+
+            <soap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startResponse">
+
+            <soap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stop">
+
+         <soap:operation soapAction=""/>
+
+         <wsdl:input name="stopRequest">
+
+            <soap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopResponse">
+
+            <soap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restart">
+
+         <soap:operation soapAction=""/>
+
+         <wsdl:input name="restartRequest">
+
+            <soap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="restartResponse">
+
+            <soap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerStatement">
+
+         <soap:operation soapAction=""/>
+
+         <wsdl:input name="registerStatementRequest">
+
+            <soap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registerStatementResponse">
+
+            <soap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EPSManagerService">
+
+      <wsdl:port binding="ns:EPSManagerSoapBinding" name="EPSManager">
+
+         <soap:address location="http://localhost:8080/axis2/services/EPSManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

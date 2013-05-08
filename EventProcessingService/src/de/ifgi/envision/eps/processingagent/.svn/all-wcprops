@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/envision~runtime/!svn/ver/530/services/EventProcessingService/src/de/ifgi/envision/eps/processingagent
+END
+SosEPA.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/envision~runtime/!svn/ver/1145/services/EventProcessingService/src/de/ifgi/envision/eps/processingagent/SosEPA.java
+END
+SmederevoEPA.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/envision~runtime/!svn/ver/1155/services/EventProcessingService/src/de/ifgi/envision/eps/processingagent/SmederevoEPA.java
+END
+TimeOrderEPA.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/envision~runtime/!svn/ver/1155/services/EventProcessingService/src/de/ifgi/envision/eps/processingagent/TimeOrderEPA.java
+END

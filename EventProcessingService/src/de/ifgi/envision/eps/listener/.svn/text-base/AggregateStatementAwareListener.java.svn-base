@@ -1,0 +1,54 @@
+package de.ifgi.envision.eps.listener;
+
+import org.apache.log4j.Logger;
+import org.joda.time.Interval;
+import org.openrdf.repository.RepositoryException;
+
+import com.espertech.esper.client.EPServiceProvider;
+import com.espertech.esper.client.EPStatement;
+import com.espertech.esper.client.EventBean;
+import com.espertech.esper.client.StatementAwareUpdateListener;
+import com.vividsolutions.jts.geom.Geometry;
+
+import de.ifgi.envision.eps.event.ObservationEvent;
+import de.ifgi.envision.eps.push.EventPusher;
+import de.ifgi.envision.eps.push.MessageBuilder;
+
+public class AggregateStatementAwareListener implements
+		StatementAwareUpdateListener {
+
+	private static Logger log = Logger.getLogger(AggregateStatementAwareListener.class);
+	
+	private MessageBuilder builder;
+	
+	@Override
+	public void update(EventBean[] newEvents, EventBean[] oldEvents,
+			EPStatement statement, EPServiceProvider epServiceProvider) {
+
+		//ObservationEvent event = (ObservationEvent) newEvents[0].getUnderlying();
+		EventBean event = newEvents[0];
+		Geometry spatialLocation = (Geometry) event.get("spatialLocation");
+		String observedProperty = (String) event.get("observedProperty");
+		Interval temporalLocation = (Interval) event.get("temporalLocation");
+		String source = (String) event.get("source");
+		String url = (String) event.get("url");
+		String uom = (String) event.get("unitOfMeasure");
+		
+		Double aggregateValue = (Double) event.get("aggregateValue");
+		
+		System.out.printf("EVENT at %s!!\n", spatialLocation.toText());
+		System.out.printf("Timestamp: %s\n", temporalLocation.getEnd().toString());
+		System.out.printf("AggregateValue: %.2f %s\n", aggregateValue, uom);
+		
+		try {
+			builder = new MessageBuilder();
+			// The aggregateValue would be also be interesting to add to the EventObservation instance
+			String message = builder.createRDFMessage(spatialLocation, temporalLocation, observedProperty, statement.getName(), statement.getText(), source, url);
+			EventPusher.getEventPusher().push(message);
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules
+END
+scripting-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/scripting-1.6.1.mar
+END
+addressing-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/addressing-1.6.1.mar
+END
+modules.list
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/modules.list
+END
+mex-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/mex-1.6.1.mar
+END
+soapmonitor-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/soapmonitor-1.6.1.mar
+END
+mtompolicy-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/mtompolicy-1.6.1.mar
+END
+ping-1.6.1.mar
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/envision~runtime/!svn/ver/845/services/EventProcessingService/WebContent/WEB-INF/modules/ping-1.6.1.mar
+END

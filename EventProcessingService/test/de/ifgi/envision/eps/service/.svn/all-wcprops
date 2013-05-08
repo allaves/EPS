@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/envision~runtime/!svn/ver/1144/services/EventProcessingService/test/de/ifgi/envision/eps/service
+END
+TestServiceRegistry.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/envision~runtime/!svn/ver/1144/services/EventProcessingService/test/de/ifgi/envision/eps/service/TestServiceRegistry.java
+END
+TestSOS.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/envision~runtime/!svn/ver/1229/services/EventProcessingService/test/de/ifgi/envision/eps/service/TestSOS.java
+END

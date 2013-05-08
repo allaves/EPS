@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/envision~runtime/!svn/ver/858/services/EventProcessingService/test/de/ifgi/envision/eps/client
+END
+TestEPSManagerClientRestart.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/envision~runtime/!svn/ver/858/services/EventProcessingService/test/de/ifgi/envision/eps/client/TestEPSManagerClientRestart.java
+END
+TestEPSManagerClientStop.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/envision~runtime/!svn/ver/858/services/EventProcessingService/test/de/ifgi/envision/eps/client/TestEPSManagerClientStop.java
+END

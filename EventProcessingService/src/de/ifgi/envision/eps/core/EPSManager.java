@@ -1,0 +1,187 @@
+package de.ifgi.envision.eps.core;
+
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.log4j.Logger;
+
+import de.ifgi.envision.eps.exception.MalformedRuleException;
+import de.ifgi.envision.eps.parser.JSONParser;
+import de.ifgi.envision.eps.parser.Pair;
+import de.ifgi.envision.eps.parser.RuleMLParser;
+import de.ifgi.envision.eps.push.EventPusher;
+import de.ifgi.envision.eps.service.SOS;
+import de.ifgi.envision.eps.service.ServiceManager;
+
+//@WebService(endpointInterface = "de.ifgi.envision.eps.core.EPSManagerInterface")
+public class EPSManager /*implements EPSManagerInterface*/ {
+	private static org.apache.log4j.Logger log = Logger.getLogger(EPSManager.class);
+	
+	private ScheduledFuture<?> serviceHandler; // will be a HashMap to manage different services
+	//private ServiceRegistry serviceRegistry;	// maybe the ServiceRegistry functionalities can be included in the ServiceManager class 
+	
+	private JSONParser jsonParser;
+	private RuleMLParser ruleMLParser;
+
+	public String start() {
+		jsonParser = new JSONParser();
+		ruleMLParser = new RuleMLParser();
+		//serviceRegistry = ServiceRegistry.INSTANCE;
+		// Initialization of EventPusher
+		EventPusher.getEventPusher().initConnection();
+		//initializeEventProcessingAgents();
+		//serviceScheduled = true;
+		return "Event Processing Service started!";
+	}
+	
+	public String restart() {
+		stop();
+		start();
+		return "Event Processing Service restarted!";
+	}
+	
+	/**
+	 * This service cancels all the scheduled tasks and stop the EPS
+	 * @return
+	 */
+	public String stop() {
+		// Closing EventPusher
+		EventPusher.getEventPusher().closeConnection();
+		log.info("Event bus connection closed.");
+		// Deregistering statements
+		EventProcessingServiceProvider.getEPServiceProvider().getEPAdministrator().destroyAllStatements();
+		log.info("All statements deregistered.");
+		// Cancelling all scheduled sensor data retrieval tasks
+		for (String id : ServiceManager.getServiceManager().getServiceIds()) {
+			SOS service = (SOS) ServiceManager.getServiceManager().getService(id);
+			service.getFutureTask().cancel(true);
+		}
+		log.info("Scheduled services stopped.");
+		// Clearing the service registry
+		ServiceManager.getServiceManager().clearRegistry();
+		return "Event Processing Service stopped!";
+	}
+	
+	/*
+	 * Registers a service and schedules data requests periodically every [numberOTimeUnits] [timeUnit]
+	 */
+	public boolean registerService(String serviceURL, String offering, String observedProperty, String timeUnit, Integer numberOfTimeUnits) {
+		String serviceId = serviceURL.concat("/").concat(offering);
+		// Check if the service is already registered
+		if (!ServiceManager.getServiceManager().getServiceIds().contains(serviceId)) {
+			// Register service 
+			SOS service = new SOS(serviceURL, offering, observedProperty);
+			ServiceManager.getServiceManager().registerService(serviceId, service);
+			TimeUnit tu = null;
+			if (timeUnit.compareToIgnoreCase("SECONDS") == 0) {
+				tu = TimeUnit.SECONDS;
+			}
+			else if (timeUnit.compareToIgnoreCase("MINUTES") == 0) {
+				tu = TimeUnit.MINUTES;
+			}
+			else if (timeUnit.compareToIgnoreCase("HOURS") == 0) {
+				tu = TimeUnit.HOURS;
+			}
+			else if (timeUnit.compareToIgnoreCase("DAYS") == 0) {
+				tu = TimeUnit.DAYS;
+			}
+			else {
+				log.error("The time unit specified is not allowed!");
+				return false;
+			}
+			serviceHandler = service.scheduleGetResponseBody(tu, numberOfTimeUnits);
+			if (serviceHandler != null) {
+				return true;
+			}
+		}
+		log.info("This service was already registered!");
+		return false;
+	}
+	
+	/*
+	 * Registers a service and schedules data requests periodically from [begin] to [end] every [numberOTimeUnits] [timeUnit]
+	 */
+	public boolean registerServiceForHistoricalData(String serviceURL, String offering, String observedProperty, String begin, String end, String timeUnit, Integer numberOfTimeUnits) {
+		String serviceId = serviceURL.concat("/").concat(offering);
+		// Check if the service is already registered
+		if (!ServiceManager.getServiceManager().getServiceIds().contains(serviceId)) {
+			// Register service 
+			SOS service = new SOS(serviceURL, offering, observedProperty, begin, end);
+			ServiceManager.getServiceManager().registerService(serviceId, service);
+			TimeUnit tu = null;
+			if (timeUnit.compareToIgnoreCase("SECONDS") == 0) {
+				tu = TimeUnit.SECONDS;
+			}
+			else if (timeUnit.compareToIgnoreCase("MINUTES") == 0) {
+				tu = TimeUnit.MINUTES;
+			}
+			else if (timeUnit.compareToIgnoreCase("HOURS") == 0) {
+				tu = TimeUnit.HOURS;
+			}
+			else if (timeUnit.compareToIgnoreCase("DAYS") == 0) {
+				tu = TimeUnit.DAYS;
+			}
+			else {
+				log.error("The time unit specified is not allowed!");
+				return false;
+			}
+			serviceHandler = service.scheduleGetResponseBody(tu, numberOfTimeUnits);
+			if (serviceHandler != null) {
+				return true;
+			}
+		}
+		log.info("This service was already registered!");
+		return false;
+	}
+	
+	/*
+	 * TODO public boolean deregisterService(String serviceId)
+	 */
+
+	public boolean registerStatement(String stm, String eventType) {
+		 if (EventProcessingServiceProvider.registerStatement(stm, eventType)) {
+			 return true;
+		 }
+		 return false;
+	}
+	
+	/*
+	 * TODO public boolean deregisterStatement(String stmId)
+	 */
+	
+	public boolean registerRuleMLStatement(String ruleMLStm) {
+		Pair<String, String> result = null;
+		String[] eplStatements = null;
+		try {
+			result = ruleMLParser.ruleMLToEPL(ruleMLStm);
+			eplStatements = jsonParser.JSONToEPL(result.getJsonStm());
+		} catch (MalformedRuleException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < eplStatements.length; i++) {
+			if (!eplStatements[i].isEmpty() && registerStatement(eplStatements[i], result.getEventType()) == false) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean registerJSONStatement(String jsonStm, String eventType) {
+		String[] eplStatements = new String[]{"", ""};
+		try {
+			eplStatements = jsonParser.JSONToEPL(jsonStm);
+		} catch (MalformedRuleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		for (int i = 0; i < eplStatements.length; i++) {
+			if (!eplStatements[i].isEmpty() && registerStatement(eplStatements[i], eventType) == false) {
+				return false;
+			}
+		}
+		return true;
+		
+	}
+
+	
+}

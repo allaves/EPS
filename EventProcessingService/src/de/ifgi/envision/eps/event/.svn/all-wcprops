@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/envision~runtime/!svn/ver/394/services/EventProcessingService/src/de/ifgi/envision/eps/event
+END
+ObservationEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/event/ObservationEvent.java
+END
+Event.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/event/Event.java
+END
+Sensor.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/envision~runtime/!svn/ver/858/services/EventProcessingService/src/de/ifgi/envision/eps/event/Sensor.java
+END
+AggregationEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/event/AggregationEvent.java
+END
+EventPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/envision~runtime/!svn/ver/516/services/EventProcessingService/src/de/ifgi/envision/eps/event/EventPattern.java
+END
+SOSObservationEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/event/SOSObservationEvent.java
+END
+WaterMLObservationEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/event/WaterMLObservationEvent.java
+END
+Participant.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/src/de/ifgi/envision/eps/event/Participant.java
+END

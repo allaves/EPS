@@ -1,0 +1,27 @@
+<service name="EPSManager" scope="application">
+    <Description> EPSManager Service </Description>  
+    <transports> 
+        <transport>http</transport>
+    </transports>
+    <schema schemaNamespace="schema namespace"/> 
+    <operation name="start"> 
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="restart"> 
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="stop"> 
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+     <operation name="registerStatement"> 
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="registerService"> 
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+                             class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </messageReceivers>
+    <parameter name="ServiceClass" locked="xsd:false">de.ifgi.envision.eps.core.EPSManager</parameter>
+</service>

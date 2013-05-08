@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/envision~runtime/!svn/ver/516/services/EventProcessingService/src/de/ifgi/envision/eps/exception
+END
+SensorLocationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/envision~runtime/!svn/ver/518/services/EventProcessingService/src/de/ifgi/envision/eps/exception/SensorLocationException.java
+END
+MalformedRuleException.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/envision~runtime/!svn/ver/1212/services/EventProcessingService/src/de/ifgi/envision/eps/exception/MalformedRuleException.java
+END

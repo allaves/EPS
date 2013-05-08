@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/envision~runtime/!svn/ver/1086/services/EventProcessingService/src/de/ifgi/envision/eps/parser
+END
+OMParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/src/de/ifgi/envision/eps/parser/OMParser.java
+END
+RuleMLParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/parser/RuleMLParser.java
+END
+Pair.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/parser/Pair.java
+END
+JSONParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/parser/JSONParser.java
+END
+EnStreaMRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/parser/EnStreaMRule.java
+END
+Value.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/parser/Value.java
+END

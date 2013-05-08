@@ -1,0 +1,62 @@
+package de.ifgi.envision.eps.event;
+
+public class ObsEvent {
+	private String location; // Geometry
+	private String samplingTime; // Time
+	private String observedProperty; // ObservedProperty
+	private String source; // ObsSource
+	private String value; // HashMap<ArrayList<Geometry, Time>, Double> or Double
+	private String uom;
+
+	public ObsEvent() {}
+
+	public String getUom() {
+		return uom;
+	}
+
+	public void setUom(String uom) {
+		this.uom = uom;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getSamplingTime() {
+		return samplingTime;
+	}
+
+	public void setSamplingTime(String samplingTime) {
+		this.samplingTime = samplingTime;
+	}
+
+	public String getObservedProperty() {
+		return observedProperty;
+	}
+
+	public void setObservedProperty(String observedProperty) {
+		this.observedProperty = observedProperty;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
+	
+}

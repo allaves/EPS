@@ -1,0 +1,34 @@
+package de.ifgi.envision.eps.event;
+
+import java.util.Date;
+import java.util.List;
+
+import org.joda.time.Interval;
+
+import com.vividsolutions.jts.geom.Geometry;
+
+public class SOSObservationEvent extends ObservationEvent {
+	
+	private String unitOfMeasure;
+	private String url;
+
+	public SOSObservationEvent(Interval temporalLocation, List<Participant> participants, 
+			Geometry spatialLocation, Sensor observer, Double value, String observedProperty, String unitOfMeasure, String source, String url) {
+		super(temporalLocation, participants, spatialLocation, observer, value, observedProperty, source);
+		this.unitOfMeasure = unitOfMeasure;
+		this.url = url;
+	}
+	
+	public Sensor getObserver() {
+		return (Sensor) observer;
+	}
+	
+	public String getUnitOfMeasure() {
+		return unitOfMeasure;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	
+}

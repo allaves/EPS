@@ -1,0 +1,36 @@
+package de.ifgi.envision.eps.subscriber;
+
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+import org.openrdf.repository.RepositoryException;
+
+import de.ifgi.envision.eps.event.SOSObservationEvent;
+import de.ifgi.envision.eps.push.EventPusher;
+import de.ifgi.envision.eps.push.MessageBuilder;
+
+public class LowWaterLevelEventSubscriber {
+	
+	private static Logger log = Logger.getLogger(LowWaterLevelEventSubscriber.class);
+	private static String EVENT_TYPE = "http://purl.org/ifgi/water/flood#LowWaterLevel";
+	private static String OBSERVED_PROPERTY = "http://purl.org/ifgi/water/flood#WaterLevel";
+	private MessageBuilder builder;
+	
+	
+	public void update(SOSObservationEvent waterflow_obs, SOSObservationEvent waterlevel_obs) {
+//		System.out.printf("LOW WATER LEVEL EVENT at %s!!\n", waterlevel_obs.getSpatialLocation());
+//		System.out.printf("Sensor id: %s\n", waterflow_obs.getObserver().getId());
+//		System.out.printf("Timestamp waterflow observation: %s\n", waterflow_obs.getTemporalLocation().toString());
+//		System.out.printf("Value waterflow: %s %s\n", waterflow_obs.getValue(), waterflow_obs.getUnitOfMeasure());
+//		System.out.printf("Timestamp waterlevel observation: %s\n", waterlevel_obs.getTemporalLocation().toString());
+//		System.out.printf("Value waterlevel: %s %s\n\n", waterlevel_obs.getValue(), waterlevel_obs.getUnitOfMeasure());
+//		
+		try {
+			builder = new MessageBuilder();
+			String message = builder.createRDFMessage(waterlevel_obs.getSpatialLocation(), waterlevel_obs.getTemporalLocation(), OBSERVED_PROPERTY, EVENT_TYPE);
+			EventPusher.getEventPusher().push(message);
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+		}
+	}
+}

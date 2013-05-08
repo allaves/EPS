@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/envision~runtime/!svn/ver/394/services/EventProcessingService/WebContent/WEB-INF/lib
+END
+axis.jar
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/axis.jar
+END
+jaxrpc.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/jaxrpc.jar
+END
+wsdl4j.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/wsdl4j.jar
+END
+commons-discovery-0.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/commons-discovery-0.2.jar
+END
+saaj.jar
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/saaj.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/WebContent/WEB-INF/lib/commons-logging.jar
+END

@@ -1,0 +1,290 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>EventProcessingService</groupId>
+  <artifactId>EventProcessingService</artifactId>
+  <version>0.6-SNAPSHOT</version>
+  <properties>
+    <geotools.version>2.7.0</geotools.version>
+    <sesame.version>2.6.1</sesame.version>
+  </properties>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.espertech</groupId>
+  		<artifactId>esper</artifactId>
+  		<version>4.4.0</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.geotools</groupId>
+  		<artifactId>gt-main</artifactId>
+  		<version>${geotools.version}</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.8.2</version>
+  	</dependency>
+  	<dependency> 
+  		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-oxf-core</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-oxf-adapters</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<exclusions>
+	        <exclusion>
+	            <groupId>org.n52.sensorweb.oxf-old.ses</groupId>
+	            <artifactId>soap-envelope-beans</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.n52.sensorweb.oxf-old.ses</groupId>
+	            <artifactId>brokered-notification</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.n52.sensorweb.oxf-old.ses</groupId>
+	            <artifactId>beans</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.n52.sensorweb.oxf-old</groupId>
+	            <artifactId>wms-client-core</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.n52.sensorweb.oxf-old</groupId>
+	            <artifactId>istackp</artifactId>
+	        </exclusion>
+    	</exclusions>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.n52.sensorweb</groupId>
+  		<artifactId>52n-oxf-xmlbeans</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+  	</dependency>
+  	<!-- The OX-Framework dependencies point to the version 1.0.0 of some libraries which are deprecated.
+  	Here we added the dependencies for the version 1.1.0 -->
+  	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-sos-v100</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-gml-v212</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-gml-v311</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-gml-v321</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-sampling-v100</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.n52.sensorweb</groupId>
+		<artifactId>52n-xml-sampling-v20</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</dependency>
+	<!-- See comment above! -->
+<!--   	  <dependency> -->
+<!--   	  	<groupId>org.n52.sensorweb</groupId> -->
+<!--     	<artifactId>oxf-CS</artifactId> -->
+<!--     	<version>1.0.0</version> -->
+<!--     </dependency> -->
+<!--   	<dependency> -->
+<!--   		<groupId>org.n52.sensorweb</groupId> -->
+<!-- 		<artifactId>52n-oxf-client</artifactId> -->
+<!-- 		<version>1.0.0-SNAPSHOT</version> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!--   		<groupId>org.n52.swe.oxframework</groupId> -->
+<!--   		<artifactId>oxf-core</artifactId> -->
+<!--   		<version>20080307</version> -->
+<!--   	</dependency> -->
+  	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.1.3</version>
+	</dependency>
+<!-- 	<dependency> -->
+<!-- 		<groupId>org.uncertweb</groupId> -->
+<!-- 		<artifactId>om-api</artifactId> -->
+<!-- 		<version>1.0.0-SNAPSHOT</version> -->
+<!-- 	</dependency> -->
+  	<dependency>
+  		<groupId>com.sun.mail</groupId>
+  		<artifactId>javax.mail</artifactId>
+  		<version>1.4.4</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.ws.rs</groupId>
+  		<artifactId>jsr311-api</artifactId>
+  		<version>1.1.1</version>
+  	</dependency>
+  	<dependency>
+		<groupId>com.rabbitmq</groupId>
+		<artifactId>amqp-client</artifactId>
+		<version>3.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openrdf.sesame</groupId>
+		<artifactId>sesame-rio-n3</artifactId>
+		<version>${sesame.version}</version>
+	</dependency>	
+	<dependency>
+		<groupId>org.openrdf.sesame</groupId>
+		<artifactId>sesame-repository-sail</artifactId>
+		<version>${sesame.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openrdf.sesame</groupId>
+		<artifactId>sesame-sail-memory</artifactId>
+		<version>${sesame.version}</version>
+	</dependency>
+	<dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-kernel</artifactId>
+            <version>1.6.2</version>
+    </dependency>
+    <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-adb</artifactId>
+            <version>1.6.2</version>
+    </dependency>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  		<version>2.2.2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>joda-time</groupId>
+  		<artifactId>joda-time</artifactId>
+  		<version>2.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.hp.hpl.jena</groupId>
+  		<artifactId>jena</artifactId>
+  		<version>2.6.4</version>
+  	</dependency>
+  </dependencies>
+  <repositories>
+  	 <repository>
+		  <id>apache-repo-releases</id>
+		  <url>https://repository.apache.org/content/repositories/releases/</url>
+		  <releases>
+		   <enabled>true</enabled>
+		  </releases>
+	</repository>
+  	 <repository>
+      <id>UncertWebMavenRepository</id>
+      <name>UncertWeb Maven Repository</name>
+      <url>http://giv-uw.uni-muenster.de/m2/repo</url>
+    </repository>
+	<repository>
+		<id>java.net</id>
+		<url>http://download.java.net/maven/2</url>
+	</repository>
+	<repository>
+		<id>envision-snapshots</id>
+		<url>http://kenai.com/svn/envision~maven/</url>
+	</repository>
+	<repository>
+        <id>geotools</id>
+        <name>Open Source Geospatial Foundation Repository</name>
+        <url>http://download.osgeo.org/webdav/geotools/</url>
+	</repository>
+	<repository>
+        <id>n52-releases</id>
+        <name>52North releases</name>
+        <url>http://52north.org/maven/repo/releases/</url>
+        <releases>
+           <enabled>true</enabled>
+        </releases>
+        <snapshots>
+           <enabled>false</enabled>
+	   </snapshots>
+	</repository>
+	<repository>
+		<id>aduna</id>
+		<url>http://repo.aduna-software.org/maven2/releases/</url>
+	</repository>
+	<repository>
+        <id>n52-snapshots</id>
+        <name>52n Snapshots</name>
+        <url>http://52north.org/maven/repo/snapshots/</url>
+        <releases>
+           <enabled>false</enabled>
+        </releases>
+        <snapshots>
+           <enabled>true</enabled>
+	   </snapshots>
+	</repository>
+</repositories>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-aar-maven-plugin</artifactId>
+            <version>1.4</version>
+            <extensions>true</extensions>
+            <configuration>
+                <servicesXmlFile>${basedir}/WebContent/META-INF/services.xml</servicesXmlFile>
+                <wsdlFile>${basedir}/target/generated-resources/service.wsdl</wsdlFile>
+<!-- 				<fileSets>  -->
+<!--                     <fileSet> -->
+<!--                         <directory>${basedir}/data</directory> -->
+<!--                         <outputDirectory>data</outputDirectory> -->
+<!--                         <includes> -->
+<!--                             <include>*.xml</include> -->
+<!--                         </includes> -->
+<!--                     </fileSet> -->
+<!--                 </fileSets> -->
+                <fileSets>
+                    <fileSet>
+                        <directory>${basedir}/lib</directory>
+                        <outputDirectory>lib</outputDirectory>
+                        <includes>
+                            <include>*.jar</include>
+                        </includes>
+                    </fileSet>
+                </fileSets>
+              
+            </configuration>
+        </plugin>
+        <plugin>
+             <groupId>org.eclipse.m2e</groupId>
+             <artifactId>lifecycle-mapping</artifactId>
+             <version>1.0.0</version>
+             <configuration>
+                 <lifecycleMappingMetadata>
+                     <pluginExecutions>
+                         <pluginExecution>
+                             <pluginExecutionFilter>
+                                 <groupId>org.apache.axis2</groupId>
+                                 <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
+                                 <versionRange>[1.0,)</versionRange>
+                                 <goals>
+                                     <goal>java2wsdl</goal>
+                                 </goals>
+                             </pluginExecutionFilter>
+                             <action>
+                                 <execute />
+                             </action>
+                         </pluginExecution>
+                     </pluginExecutions>
+                 </lifecycleMappingMetadata>
+             </configuration>
+         </plugin>
+       
+    </plugins>
+</build>
+</project>

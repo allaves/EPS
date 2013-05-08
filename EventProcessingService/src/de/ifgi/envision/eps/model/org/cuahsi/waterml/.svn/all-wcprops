@@ -1,0 +1,299 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml
+END
+ZDirectionEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/ZDirectionEnum.java
+END
+SiteInfoResponseType.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SiteInfoResponseType.java
+END
+LabMethodType.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/LabMethodType.java
+END
+TimeSingleType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimeSingleType.java
+END
+ValueTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/ValueTypeEnum.java
+END
+LatLonBoxType.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/LatLonBoxType.java
+END
+LatLonPointType.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/LatLonPointType.java
+END
+QualityControlLevelEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/QualityControlLevelEnum.java
+END
+NoteType.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/NoteType.java
+END
+SampleTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SampleTypeEnum.java
+END
+DocumentationType.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/DocumentationType.java
+END
+TimeSeriesType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimeSeriesType.java
+END
+Extension.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/Extension.java
+END
+GeogLocationType.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/GeogLocationType.java
+END
+SourceInfoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SourceInfoType.java
+END
+SampleType.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SampleType.java
+END
+QueryInfoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/QueryInfoType.java
+END
+QualifierType.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/QualifierType.java
+END
+CensorCodeType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/CensorCodeType.java
+END
+TimePeriodRealTimeType.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimePeriodRealTimeType.java
+END
+SeriesCatalogType.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SeriesCatalogType.java
+END
+UnitsTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/UnitsTypeEnum.java
+END
+VariablesResponseType.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/VariablesResponseType.java
+END
+binding.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/binding.xml
+END
+TimeSeriesResponseType.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimeSeriesResponseType.java
+END
+Options.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/Options.java
+END
+TimeZoneType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimeZoneType.java
+END
+DataTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/DataTypeEnum.java
+END
+GeneralCategoryEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/GeneralCategoryEnum.java
+END
+SourceType.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SourceType.java
+END
+ContactInformationType.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/ContactInformationType.java
+END
+DataSetInfoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/DataSetInfoType.java
+END
+TimePeriodType.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimePeriodType.java
+END
+VariableInfoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/VariableInfoType.java
+END
+UnitsType.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/UnitsType.java
+END
+TimeIntervalType.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TimeIntervalType.java
+END
+SampleMediumEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SampleMediumEnum.java
+END
+Option.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/Option.java
+END
+CoordType.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/CoordType.java
+END
+CensorCodeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/CensorCodeEnum.java
+END
+TsValuesSingleVariableType.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/TsValuesSingleVariableType.java
+END
+SiteInfoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/SiteInfoType.java
+END
+MethodType.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/MethodType.java
+END
+MetaDataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/MetaDataType.java
+END
+QualityControlLevelType.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/QualityControlLevelType.java
+END
+ValueSingleVariable.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/ValueSingleVariable.java
+END
+PropertyType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/PropertyType.java
+END
+OffsetType.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/OffsetType.java
+END
+LatLonLineString.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/508/services/EventProcessingService/src/de/ifgi/envision/eps/model/org/cuahsi/waterml/LatLonLineString.java
+END

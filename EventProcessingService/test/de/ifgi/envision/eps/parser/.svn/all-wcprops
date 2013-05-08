@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/envision~runtime/!svn/ver/1201/services/EventProcessingService/test/de/ifgi/envision/eps/parser
+END
+OMParserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/test/de/ifgi/envision/eps/parser/OMParserTest.java
+END
+RuleMLParserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/test/de/ifgi/envision/eps/parser/RuleMLParserTest.java
+END
+EnStreaMRule_test.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/envision~runtime/!svn/ver/1211/services/EventProcessingService/test/de/ifgi/envision/eps/parser/EnStreaMRule_test.java
+END
+JSONParserTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/test/de/ifgi/envision/eps/parser/JSONParserTest.java
+END

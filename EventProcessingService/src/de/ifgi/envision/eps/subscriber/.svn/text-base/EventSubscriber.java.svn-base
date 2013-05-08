@@ -1,0 +1,9 @@
+package de.ifgi.envision.eps.subscriber;
+
+public class EventSubscriber {
+	
+	public static final String HIGH_WATER_LEVEL = "de.ifgi.envision.eps.subscriber.HighWaterLevelEventSubscriber";
+	
+	public static final String LOW_WATER_LEVEL = "de.ifgi.envision.eps.subscriber.LowWaterLevelEventSubscriber";
+
+}

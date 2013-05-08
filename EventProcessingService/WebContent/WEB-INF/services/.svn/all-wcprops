@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/envision~runtime/!svn/ver/903/services/EventProcessingService/WebContent/WEB-INF/services
+END
+EPSManager.aar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/envision~runtime/!svn/ver/903/services/EventProcessingService/WebContent/WEB-INF/services/EPSManager.aar
+END
+version.aar
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/envision~runtime/!svn/ver/903/services/EventProcessingService/WebContent/WEB-INF/services/version.aar
+END
+services.list
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/envision~runtime/!svn/ver/903/services/EventProcessingService/WebContent/WEB-INF/services/services.list
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/envision~runtime/!svn/ver/558/services/EventProcessingService/src/de/ifgi/envision/eps/client
+END
+EPSManagerClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/envision~runtime/!svn/ver/858/services/EventProcessingService/src/de/ifgi/envision/eps/client/EPSManagerClient.java
+END
+EPSManagerCallbackHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/envision~runtime/!svn/ver/558/services/EventProcessingService/src/de/ifgi/envision/eps/client/EPSManagerCallbackHandler.java
+END
+EPSManagerStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/envision~runtime/!svn/ver/1277/services/EventProcessingService/src/de/ifgi/envision/eps/client/EPSManagerStub.java
+END

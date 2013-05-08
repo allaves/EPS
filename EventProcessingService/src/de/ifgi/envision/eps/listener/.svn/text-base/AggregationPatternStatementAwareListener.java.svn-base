@@ -1,0 +1,72 @@
+package de.ifgi.envision.eps.listener;
+
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+import org.joda.time.Interval;
+import org.openrdf.repository.RepositoryException;
+
+import com.espertech.esper.client.EPServiceProvider;
+import com.espertech.esper.client.EPStatement;
+import com.espertech.esper.client.EventBean;
+import com.espertech.esper.client.StatementAwareUpdateListener;
+
+import de.ifgi.envision.eps.event.AggregationEvent;
+import de.ifgi.envision.eps.event.ObservationEvent;
+import de.ifgi.envision.eps.push.EventPusher;
+import de.ifgi.envision.eps.push.MessageBuilder;
+
+public class AggregationPatternStatementAwareListener implements
+		StatementAwareUpdateListener {
+	
+	private static Logger log = Logger.getLogger(AggregationPatternStatementAwareListener.class);
+	
+	private MessageBuilder builder;
+
+	/*
+	 * We assume that this listener is used for PATTERN statements which include views in the form SELECT obs1, obs2, ..., obsN
+	 * @see com.espertech.esper.client.StatementAwareUpdateListener#update(com.espertech.esper.client.EventBean[], com.espertech.esper.client.EventBean[], com.espertech.esper.client.EPStatement, com.espertech.esper.client.EPServiceProvider)
+	 */
+	@Override
+	public void update(EventBean[] newEvents, EventBean[] oldEvents,
+			EPStatement statement, EPServiceProvider epServiceProvider) {
+		
+		ArrayList<AggregationEvent> eventList = new ArrayList<AggregationEvent>();
+		
+		EventBean newEvent = newEvents[0];
+		
+		String stm = statement.getText().toLowerCase();
+		
+		// Split by FROM
+		String selectClause = stm.split("from")[0];
+		// Split by SELECT
+		String viewsString = selectClause.split("select")[1];
+		// Split by comma
+		String[] viewsArray = viewsString.split(",");
+		for (String obsAlias : viewsArray) {
+			obsAlias = obsAlias.replace(" ", "");
+			AggregationEvent obs = (AggregationEvent) newEvent.get(obsAlias);
+			eventList.add(obs);
+			System.out.printf("EVENT at %s!!\n", obs.getSpatialLocation());
+			//System.out.printf("Sensor %s: %s\n", obsAlias, obs.getObserver().getId());
+			System.out.printf("Timestamp %s: %s\n", obsAlias, obs.getTemporalLocation().toString());
+			System.out.printf("Aggregate value %s: %.2f %s\n", obsAlias, obs.getAggregateValue(), obs.getUnitOfMeasure());
+		}
+		
+		AggregationEvent lastEvent = eventList.get(eventList.size()-1);
+		Interval temporalLocation = new Interval(eventList.get(0).getTime(), lastEvent.getTime());
+		
+		try {
+			builder = new MessageBuilder();
+			// Values would be also be interesting to add to the EventObservation instance
+			// Pattern listeners can also contain aggregate values
+			// The message should allow adding multiple observed properties, e.g. water level, water flow
+			String message = builder.createRDFMessage(lastEvent.getSpatialLocation(), temporalLocation, lastEvent.getObservedProperty(), statement.getName(), statement.getText(), lastEvent.getSource(), lastEvent.getUrl());
+			EventPusher.getEventPusher().push(message);
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

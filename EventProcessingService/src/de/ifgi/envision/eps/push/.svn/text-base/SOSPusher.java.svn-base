@@ -1,0 +1,45 @@
+package de.ifgi.envision.eps.push;
+
+import java.net.URL;
+
+import com.espertech.esper.client.ConfigurationEventTypeXMLDOM;
+import com.espertech.esper.client.EPServiceProvider;
+import com.espertech.esper.client.EPServiceProviderManager;
+
+public class SOSPusher {
+	private URL schemaURL;
+	
+	private String url; // URL
+	private String sourceId;
+	
+	// Parameters
+	private String observedProperty;
+	private String samplingTime; // Time or Period
+	private String procedure;
+	private String sensorId;
+	private String foi;
+	private String location;
+	
+	public SOSPusher(URL schemaURL) {
+		this.schemaURL = schemaURL;
+		
+		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
+		ConfigurationEventTypeXMLDOM obsConfig = new ConfigurationEventTypeXMLDOM();
+		obsConfig.setRootElementName("Observation");
+		obsConfig.setSchemaResource(schemaURL.toString());
+		epService.getEPAdministrator().getConfiguration().addEventType("SOSObsEvent", obsConfig);
+	}
+	
+	public String getSOSObservations() {
+		// Define parameters
+		// Connect to SOS
+		// getObservations()
+		return null;
+	}
+	
+	public void marshall() {
+		// Create one or more observation events from the SOS observation
+		// Insert the events into the 'suitable' stream
+	}
+
+}

@@ -1,0 +1,12 @@
+package de.ifgi.envision.eps.subscriber;
+
+import de.ifgi.envision.eps.event.WaterMLObservationEvent;
+
+public class WaterMLObservationEventSubscriber {
+	
+	public void update(WaterMLObservationEvent event) {
+		System.out.printf("Observed property: : %s\n", event.getObservedProperty());
+		System.out.printf("Value: %s %s\n\n", event.getValue(), event.getUnitOfMeasure());
+	}
+
+}

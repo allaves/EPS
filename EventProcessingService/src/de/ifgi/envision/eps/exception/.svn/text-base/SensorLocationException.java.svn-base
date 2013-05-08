@@ -1,0 +1,6 @@
+package de.ifgi.envision.eps.exception;
+
+public class SensorLocationException extends Exception {
+	
+
+}

@@ -1,0 +1,37 @@
+package de.ifgi.envision.eps.processingagent;
+
+import java.io.File;
+
+import org.junit.Test;
+
+import com.espertech.esper.client.EPServiceProvider;
+
+import de.ifgi.envision.eps.core.EventProcessingServiceProvider;
+import de.ifgi.envision.eps.event.WaterMLObservationEvent;
+import de.ifgi.envision.eps.processingagent.schoharie.BurtonsvilleEPA;
+import de.ifgi.envision.eps.producer.WaterMLEventProducer;
+
+
+public class TestBurtonsvilleEPA {
+
+	private final static String SAMPLE_BURTONSVILLE = "data/streamHeightSchoharie_sept5to9th.xml";
+	
+	private WaterMLEventProducer eventProducer;
+	
+	public TestBurtonsvilleEPA() {
+		// Get instance of EPServiceProvider
+		EPServiceProvider epServiceProvider = EventProcessingServiceProvider.getEPServiceProvider();
+		// Set configuration
+		epServiceProvider.getEPAdministrator().getConfiguration().addEventType(WaterMLObservationEvent.class);
+		// Create event producer
+		eventProducer = new WaterMLEventProducer();
+		// Create Gilboa Dam Event Processing Agent
+		BurtonsvilleEPA.initiate();
+	}
+	
+	@Test
+	public void testEPA() {
+		// Parse observations and send events
+		eventProducer.parseXml(null, new File(SAMPLE_BURTONSVILLE));
+	}
+}

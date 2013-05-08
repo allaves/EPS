@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/envision~runtime/!svn/ver/544/services/EventProcessingService/test/de/ifgi/envision/eps/push
+END
+TestEventPusher.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/test/de/ifgi/envision/eps/push/TestEventPusher.java
+END
+TestWaterServiceUSGS.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/envision~runtime/!svn/ver/724/services/EventProcessingService/test/de/ifgi/envision/eps/push/TestWaterServiceUSGS.java
+END
+TestMessageBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/test/de/ifgi/envision/eps/push/TestMessageBuilder.java
+END

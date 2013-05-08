@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EPSManagerService WSDL service -->
+
+  <service name="EPSManager" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://core.eps.envision.ifgi.de"/>
+      <parameter name="wsdlServiceElement" value="EPSManagerService"/>
+      <parameter name="schemaQualified" value="http://core.eps.envision.ifgi.de"/>
+      <parameter name="wsdlServicePort" value="EPSManager"/>
+      <parameter name="className" value="de.ifgi.envision.eps.core.EPSManager"/>
+      <parameter name="wsdlPortType" value="EPSManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://core.eps.envision.ifgi.de" xmlns:retNS="http://core.eps.envision.ifgi.de" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="start" qname="operNS:start" returnQName="retNS:startReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://core.eps.envision.ifgi.de" xmlns:retNS="http://core.eps.envision.ifgi.de" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="stop" qname="operNS:stop" returnQName="retNS:stopReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://core.eps.envision.ifgi.de" xmlns:retNS="http://core.eps.envision.ifgi.de" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="restart" qname="operNS:restart" returnQName="retNS:restartReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://core.eps.envision.ifgi.de" xmlns:retNS="http://core.eps.envision.ifgi.de" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="registerStatement" qname="operNS:registerStatement" returnQName="retNS:registerStatementReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://core.eps.envision.ifgi.de" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:stm" type="tns:string"/>
+        <parameter xmlns:pns="http://core.eps.envision.ifgi.de" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fullNameEventType" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="stop restart registerStatement start"/>
+
+  </service>
+</deployment>

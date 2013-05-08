@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://core.eps.envision.ifgi.de" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://core.eps.envision.ifgi.de">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://core.eps.envision.ifgi.de">
+            <xs:element name="stop">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="stopResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="start">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="startResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="restart">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="restartResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerStatement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="stm" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventType" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerStatementResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerServiceForHistoricalData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceURL" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offering" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="observedProperty" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="begin" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="end" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="timeUnit" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numberOfTimeUnits" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerServiceForHistoricalDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerService">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceURL" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offering" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="observedProperty" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="timeUnit" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numberOfTimeUnits" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerServiceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerRuleMLStatement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ruleMLStm" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerRuleMLStatementResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerJSONStatement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="jsonStm" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventType" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerJSONStatementResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="registerRuleMLStatementRequest">
+        <wsdl:part name="parameters" element="ns:registerRuleMLStatement"/>
+    </wsdl:message>
+    <wsdl:message name="registerRuleMLStatementResponse">
+        <wsdl:part name="parameters" element="ns:registerRuleMLStatementResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerServiceRequest">
+        <wsdl:part name="parameters" element="ns:registerService"/>
+    </wsdl:message>
+    <wsdl:message name="registerServiceResponse">
+        <wsdl:part name="parameters" element="ns:registerServiceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="startRequest">
+        <wsdl:part name="parameters" element="ns:start"/>
+    </wsdl:message>
+    <wsdl:message name="startResponse">
+        <wsdl:part name="parameters" element="ns:startResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerStatementRequest">
+        <wsdl:part name="parameters" element="ns:registerStatement"/>
+    </wsdl:message>
+    <wsdl:message name="registerStatementResponse">
+        <wsdl:part name="parameters" element="ns:registerStatementResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerJSONStatementRequest">
+        <wsdl:part name="parameters" element="ns:registerJSONStatement"/>
+    </wsdl:message>
+    <wsdl:message name="registerJSONStatementResponse">
+        <wsdl:part name="parameters" element="ns:registerJSONStatementResponse"/>
+    </wsdl:message>
+    <wsdl:message name="restartRequest">
+        <wsdl:part name="parameters" element="ns:restart"/>
+    </wsdl:message>
+    <wsdl:message name="restartResponse">
+        <wsdl:part name="parameters" element="ns:restartResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerServiceForHistoricalDataRequest">
+        <wsdl:part name="parameters" element="ns:registerServiceForHistoricalData"/>
+    </wsdl:message>
+    <wsdl:message name="registerServiceForHistoricalDataResponse">
+        <wsdl:part name="parameters" element="ns:registerServiceForHistoricalDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="stopRequest">
+        <wsdl:part name="parameters" element="ns:stop"/>
+    </wsdl:message>
+    <wsdl:message name="stopResponse">
+        <wsdl:part name="parameters" element="ns:stopResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="EPSManagerPortType">
+        <wsdl:operation name="registerRuleMLStatement">
+            <wsdl:input message="ns:registerRuleMLStatementRequest" wsaw:Action="urn:registerRuleMLStatement"/>
+            <wsdl:output message="ns:registerRuleMLStatementResponse" wsaw:Action="urn:registerRuleMLStatementResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerService">
+            <wsdl:input message="ns:registerServiceRequest" wsaw:Action="urn:registerService"/>
+            <wsdl:output message="ns:registerServiceResponse" wsaw:Action="urn:registerServiceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="start">
+            <wsdl:input message="ns:startRequest" wsaw:Action="urn:start"/>
+            <wsdl:output message="ns:startResponse" wsaw:Action="urn:startResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerStatement">
+            <wsdl:input message="ns:registerStatementRequest" wsaw:Action="urn:registerStatement"/>
+            <wsdl:output message="ns:registerStatementResponse" wsaw:Action="urn:registerStatementResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerJSONStatement">
+            <wsdl:input message="ns:registerJSONStatementRequest" wsaw:Action="urn:registerJSONStatement"/>
+            <wsdl:output message="ns:registerJSONStatementResponse" wsaw:Action="urn:registerJSONStatementResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="restart">
+            <wsdl:input message="ns:restartRequest" wsaw:Action="urn:restart"/>
+            <wsdl:output message="ns:restartResponse" wsaw:Action="urn:restartResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerServiceForHistoricalData">
+            <wsdl:input message="ns:registerServiceForHistoricalDataRequest" wsaw:Action="urn:registerServiceForHistoricalData"/>
+            <wsdl:output message="ns:registerServiceForHistoricalDataResponse" wsaw:Action="urn:registerServiceForHistoricalDataResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="stop">
+            <wsdl:input message="ns:stopRequest" wsaw:Action="urn:stop"/>
+            <wsdl:output message="ns:stopResponse" wsaw:Action="urn:stopResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EPSManagerSoap11Binding" type="ns:EPSManagerPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="registerRuleMLStatement">
+            <soap:operation soapAction="urn:registerRuleMLStatement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerService">
+            <soap:operation soapAction="urn:registerService" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="start">
+            <soap:operation soapAction="urn:start" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerJSONStatement">
+            <soap:operation soapAction="urn:registerJSONStatement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerStatement">
+            <soap:operation soapAction="urn:registerStatement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="restart">
+            <soap:operation soapAction="urn:restart" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerServiceForHistoricalData">
+            <soap:operation soapAction="urn:registerServiceForHistoricalData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="stop">
+            <soap:operation soapAction="urn:stop" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EPSManagerSoap12Binding" type="ns:EPSManagerPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="registerRuleMLStatement">
+            <soap12:operation soapAction="urn:registerRuleMLStatement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerService">
+            <soap12:operation soapAction="urn:registerService" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="start">
+            <soap12:operation soapAction="urn:start" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerJSONStatement">
+            <soap12:operation soapAction="urn:registerJSONStatement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerStatement">
+            <soap12:operation soapAction="urn:registerStatement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="restart">
+            <soap12:operation soapAction="urn:restart" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerServiceForHistoricalData">
+            <soap12:operation soapAction="urn:registerServiceForHistoricalData" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="stop">
+            <soap12:operation soapAction="urn:stop" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EPSManagerHttpBinding" type="ns:EPSManagerPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="registerRuleMLStatement">
+            <http:operation location="registerRuleMLStatement"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerService">
+            <http:operation location="registerService"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="start">
+            <http:operation location="start"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerJSONStatement">
+            <http:operation location="registerJSONStatement"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerStatement">
+            <http:operation location="registerStatement"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="restart">
+            <http:operation location="restart"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerServiceForHistoricalData">
+            <http:operation location="registerServiceForHistoricalData"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="stop">
+            <http:operation location="stop"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EPSManager">
+        <wsdl:port name="EPSManagerHttpSoap11Endpoint" binding="ns:EPSManagerSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/EPSManager"/>
+        </wsdl:port>
+        <wsdl:port name="EPSManagerHttpSoap12Endpoint" binding="ns:EPSManagerSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/EPSManager"/>
+        </wsdl:port>
+        <wsdl:port name="EPSManagerHttpEndpoint" binding="ns:EPSManagerHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/EPSManager"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

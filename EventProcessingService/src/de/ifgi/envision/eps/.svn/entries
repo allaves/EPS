@@ -1,0 +1,157 @@
+10
+
+dir
+394
+https://svn.kenai.com/svn/envision~runtime/services/EventProcessingService/src/de/ifgi/envision/eps
+https://svn.kenai.com/svn/envision~runtime
+
+
+
+2011-05-23T17:08:27.510630Z
+394
+allaves
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d472c5f8-e33e-c985-ed04-a06641f4d889
+
+client
+dir
+
+
+
+delete
+
+core
+dir
+
+event
+dir
+
+exception
+dir
+
+listener
+dir
+
+manager
+dir
+
+
+
+delete
+
+model
+dir
+
+parser
+dir
+
+poll
+dir
+
+
+
+delete
+
+processingagent
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://svn.kenai.com/svn/envision~runtime/services/EventProcessingService/src/de/ifgi/envision/eps/statement
+394
+
+producer
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://svn.kenai.com/svn/envision~runtime/services/EventProcessingService/src/de/ifgi/envision/eps/manager
+405
+
+push
+dir
+
+service
+dir
+
+statement
+dir
+
+
+
+delete
+
+subscriber
+dir
+
+
+
+delete
+
+test
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+

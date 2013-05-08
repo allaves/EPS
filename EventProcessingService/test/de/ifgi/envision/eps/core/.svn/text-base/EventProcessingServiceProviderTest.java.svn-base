@@ -1,0 +1,30 @@
+package de.ifgi.envision.eps.core;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import com.espertech.esper.client.EPStatement;
+
+public class EventProcessingServiceProviderTest {
+
+	@Test
+	public void addListenerTest() {
+		//String stm = "SELECT obs1, obs2, obs3 FROM pattern[ every(obs1=ObservationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054', value >70.0) -> obs2=ObservationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054', value >72.0) -> obs3=ObservationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054', value >74.0))]";
+		String[] statements = new String[]{"INSERT INTO AggregationEvent SELECT temporalLocation, observedProperty, spatialLocation, source, unitOfMeasure, url, sum(value) as aggregateValue, 'sum' as aggregationType, '1 day' as aggregationTimeSpan FROM ObservationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054').win:time_batch(1 day)",
+										"SELECT obs1, obs2 FROM pattern[ every(obs1=AggregationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054', aggregateValue >0.0) -> obs2=AggregationEvent(observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0054', aggregateValue >72.0))]"};
+		for (String stm : statements) {
+			EPStatement epStm = EventProcessingServiceProvider.getEPServiceProvider().getEPAdministrator().createEPL(stm, "");
+			stm = stm.toLowerCase();
+			if (!stm.startsWith("insert into")) {
+				assertTrue(EventProcessingServiceProvider.addListener(epStm));
+			}
+			else {
+				System.out.println("INSERT INTO statement registered.");
+			}
+			
+			
+		}
+	}
+
+}

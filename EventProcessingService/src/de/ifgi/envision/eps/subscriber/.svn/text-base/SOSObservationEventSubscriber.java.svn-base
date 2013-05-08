@@ -1,0 +1,14 @@
+package de.ifgi.envision.eps.subscriber;
+
+import de.ifgi.envision.eps.event.SOSObservationEvent;
+
+public class SOSObservationEventSubscriber {
+	
+	public void update(SOSObservationEvent event) {
+		System.out.printf("Sensor id: %s\n", event.getObserver().getId());
+		System.out.printf("Observed property: %s\n", event.getObservedProperty());
+		System.out.printf("Timestamp: %s\n", event.getTemporalLocation().toString());
+		System.out.printf("Value: %s %s\n\n", event.getValue(), event.getUnitOfMeasure());
+	}
+
+}

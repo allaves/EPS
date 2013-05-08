@@ -1,0 +1,15 @@
+package de.ifgi.envision.eps.processingagent;
+
+import org.apache.log4j.Logger;
+
+public class Sum20EPA {
+	private static org.apache.log4j.Logger log = Logger.getLogger(Sum20EPA.class);
+	
+	public static final void initiate() {
+		// get current context classloader                                                                                                                                  
+		ClassLoader contextClassloader = Thread.currentThread().getContextClassLoader();
+		// then alter the class-loader (but which one ? the one used to load this class itself) with:
+		Thread.currentThread().setContextClassLoader(PrattsvilleEPA.class.getClassLoader());
+		
+	}
+}

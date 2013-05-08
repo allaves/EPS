@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="de/ifgi/envision/eps/core/MyService.java|de/ifgi/envision/eps/event/SimpleGeospatialEvent.java|de/ifgi/envision/eps/event/ComplexGeospatialEvent.java|de/ifgi/envision/eps/subscriber/ActionToMinorThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/ActionToNormalThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/MajorToModerateThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/MinorToActionThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/MinorToModerateThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/ModerateToMajorThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/ModerateToMinorThresholdExceededSubscriber.java|de/ifgi/envision/eps/subscriber/NormalToActionThresholdExceededSubscriber.java|de/ifgi/envision/eps/processingagent/schoharie/BreakabeenEPA.java|de/ifgi/envision/eps/processingagent/schoharie/BurtonsvilleEPA.java|de/ifgi/envision/eps/processingagent/schoharie/GilboaBridgeEPA.java|de/ifgi/envision/eps/processingagent/schoharie/GilboaDamEPA.java|de/ifgi/envision/eps/processingagent/schoharie/PrattsvilleEPA.java|de/ifgi/envision/eps/service/ServiceRegistry.java|de/ifgi/envision/eps/push/SOSPusher.java|de/ifgi/envision/eps/core/EPSPublisher.java|de/ifgi/envision/eps/core/EPSManagerInterface.java|de/ifgi/envision/eps/event/WaterMLObservationEvent.java|de/ifgi/envision/eps/event/SOSObservationEvent.java|de/ifgi/envision/eps/listener/WaterMLObservationListener.java|de/ifgi/envision/eps/subscriber/HighWaterLevelEventSubscriber.java|de/ifgi/envision/eps/subscriber/LowWaterLevelEventSubscriber.java|de/ifgi/envision/eps/subscriber/SOSObservationEventSubscriber.java|de/ifgi/envision/eps/subscriber/WaterMLObservationEventSubscriber.java|de/ifgi/envision/eps/processingagent/schoharie/FloodThresholds.java|de/ifgi/envision/eps/processingagent/SmederevoEPA.java|de/ifgi/envision/eps/processingagent/SosEPA.java|de/ifgi/envision/eps/processingagent/TimeOrderEPA.java|de/ifgi/envision/eps/subscriber/EventSubscriber.java|de/ifgi/envision/eps/listener/EventObservationStatementAwareListener.java" kind="src" path="src"/>
+	<classpathentry excluding="de/ifgi/envision/eps/processingagent/TestOMApiUncertweb.java|de/ifgi/envision/eps/producer/TestWaterMLEventProducer.java|de/ifgi/envision/eps/processingagent/TestBreakabeenEPA.java|de/ifgi/envision/eps/processingagent/TestBurtonsvilleEPA.java|de/ifgi/envision/eps/processingagent/TestGilboaBridgeEPA.java|de/ifgi/envision/eps/processingagent/TestGilboaDamEPA.java|de/ifgi/envision/eps/processingagent/TestPrattsvilleEPA.java|de/ifgi/envision/eps/service/TestServiceRegistry.java|de/ifgi/envision/eps/client/" kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/JosekiParliamentClient.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

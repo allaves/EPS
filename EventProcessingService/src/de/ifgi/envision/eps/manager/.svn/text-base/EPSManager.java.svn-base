@@ -1,0 +1,42 @@
+package de.ifgi.envision.eps.manager;
+
+import com.espertech.esper.client.EPAdministrator;
+import com.espertech.esper.client.EPRuntime;
+import com.espertech.esper.client.EPServiceProvider;
+import com.espertech.esper.client.EPServiceProviderManager;
+import com.espertech.esper.client.util.XMLEventRenderer;
+
+import de.ifgi.envision.eps.event.ObsEvent;
+import de.ifgi.envision.eps.statement.ObservationAllStatement;
+import de.ifgi.envision.eps.statement.ObservationCounterStatement;
+
+public class EPSManager {
+	
+	public EPSManager() {	
+	}
+	
+	public static void main(String[] args) {
+		// Create the administrator
+		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
+		EPRuntime runtime = epService.getEPRuntime();
+		EPAdministrator epAdmin = epService.getEPAdministrator();
+		
+		// Create an observation event
+		ObsEvent observation = new ObsEvent();
+		observation.setLocation("Muenster");
+		observation.setObservedProperty("air_temperature");
+		observation.setSamplingTime("time");
+		observation.setSource("ifgi_sensor");
+		observation.setValue("22");
+		observation.setUom("degrees Celsius");
+		
+		// Create a simple statement
+		ObservationAllStatement statement = new ObservationAllStatement(epAdmin);
+		
+		// Send the event!
+		runtime.sendEvent(observation);
+		
+		
+	}
+
+}

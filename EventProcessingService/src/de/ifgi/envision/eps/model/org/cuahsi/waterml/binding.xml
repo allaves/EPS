@@ -1,0 +1,474 @@
+<binding xmlns:ns1="http://www.cuahsi.org/waterML/1.1/" name="binding" package="org.cuahsi.waterml" trim-whitespace="true">
+  <namespace uri="http://www.cuahsi.org/waterML/1.1/" default="elements"/>
+  <format label="ns1:zDirectionEnum" type="org.cuahsi.waterml.ZDirectionEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:CensorCodeEnum" type="org.cuahsi.waterml.CensorCodeEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:UnitsTypeEnum" type="org.cuahsi.waterml.UnitsTypeEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:QualityControlLevelEnum" type="org.cuahsi.waterml.QualityControlLevelEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:SampleMediumEnum" type="org.cuahsi.waterml.SampleMediumEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:generalCategoryEnum" type="org.cuahsi.waterml.GeneralCategoryEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:dataTypeEnum" type="org.cuahsi.waterml.DataTypeEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:sampleTypeEnum" type="org.cuahsi.waterml.SampleTypeEnum" enum-value-method="xmlValue"/>
+  <format label="ns1:valueTypeEnum" type="org.cuahsi.waterml.ValueTypeEnum" enum-value-method="xmlValue"/>
+  <mapping abstract="true" type-name="ns1:SiteInfoType" class="org.cuahsi.waterml.SiteInfoType">
+    <structure map-as="ns1:SourceInfoType"/>
+    <value style="element" name="siteName" get-method="getSiteName" set-method="setSiteName"/>
+    <collection get-method="getSiteCodeList" set-method="setSiteCodeList" create-type="java.util.ArrayList">
+      <structure type="org.cuahsi.waterml.SiteInfoType$SiteCode" name="siteCode">
+        <value style="text" get-method="getString" set-method="setString"/>
+        <value style="attribute" name="default" get-method="getDefault" set-method="setDefault" usage="optional"/>
+        <value style="attribute" name="network" get-method="getNetwork" set-method="setNetwork"/>
+        <value style="attribute" name="siteID" get-method="getSiteID" set-method="setSiteID" usage="optional"/>
+        <value style="attribute" name="agencyCode" get-method="getAgencyCode" set-method="setAgencyCode" usage="optional"/>
+        <value style="attribute" name="agencyName" get-method="getAgencyName" set-method="setAgencyName" usage="optional"/>
+      </structure>
+    </collection>
+    <structure get-method="getTimeZoneInfo" set-method="setTimeZoneInfo" usage="optional" name="timeZoneInfo">
+      <structure map-as="ns1:TimeZoneType" get-method="getDefaultTimeZone" set-method="setDefaultTimeZone" usage="optional" name="defaultTimeZone"/>
+      <structure map-as="ns1:TimeZoneType" get-method="getDaylightSavingsTimeZone" set-method="setDaylightSavingsTimeZone" usage="optional" name="daylightSavingsTimeZone"/>
+      <value style="attribute" name="siteUsesDaylightSavingsTime" get-method="getSiteUsesDaylightSavingsTime" set-method="setSiteUsesDaylightSavingsTime" usage="optional"/>
+    </structure>
+    <structure name="geoLocation">
+      <structure map-as="ns1:GeogLocationType" get-method="getGeoLocationGeogLocation" set-method="setGeoLocationGeogLocation" name="geogLocation"/>
+      <collection get-method="getLocalSiteXYList" set-method="setLocalSiteXYList" usage="optional" create-type="java.util.ArrayList">
+        <structure type="org.cuahsi.waterml.SiteInfoType$LocalSiteXY" name="localSiteXY">
+          <value style="element" name="X" get-method="getX" set-method="setX"/>
+          <value style="element" name="Y" get-method="getY" set-method="setY"/>
+          <value style="element" name="Z" get-method="getZ" set-method="setZ" usage="optional"/>
+          <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+            <structure map-as="ns1:NoteType" name="note"/>
+          </collection>
+          <value style="attribute" name="projectionInformation" get-method="getProjectionInformation" set-method="setProjectionInformation" usage="optional"/>
+        </structure>
+      </collection>
+    </structure>
+    <value style="element" name="elevation_m" get-method="getElevationM" set-method="setElevationM" usage="optional"/>
+    <value style="element" name="verticalDatum" get-method="getVerticalDatum" set-method="setVerticalDatum" usage="optional"/>
+    <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:NoteType" name="note"/>
+    </collection>
+    <structure type="org.cuahsi.waterml.Extension" get-method="getExtension" set-method="setExtension" usage="optional"/>
+    <value style="element" name="altname" get-method="getAltname" set-method="setAltname" usage="optional"/>
+    <collection get-method="getSiteTypeList" set-method="setSiteTypeList" usage="optional" create-type="java.util.ArrayList">
+      <value style="element" name="siteType" type="java.lang.String"/>
+    </collection>
+    <collection get-method="getSitePropertyList" set-method="setSitePropertyList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:PropertyType" name="siteProperty"/>
+    </collection>
+    <structure get-method="getOid" set-method="setOid" usage="optional">
+      <value style="attribute" name="oid" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getOid" set-method="setOid" usage="optional"/>
+    </structure>
+    <structure get-method="getMetadataTime" set-method="setMetadataTime" usage="optional">
+      <value style="attribute" name="metadataTime" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getMetadataTime" set-method="setMetadataTime" usage="optional"/>
+    </structure>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TsValuesSingleVariableType" class="org.cuahsi.waterml.TsValuesSingleVariableType">
+    <collection get-method="getValueList" set-method="setValueList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:ValueSingleVariable" name="value"/>
+    </collection>
+    <structure map-as="ns1:UnitsType" get-method="getUnits" set-method="setUnits" usage="optional" name="units"/>
+    <collection get-method="getQualifierList" set-method="setQualifierList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:QualifierType" name="qualifier"/>
+    </collection>
+    <collection get-method="getQualityControlLevelList" set-method="setQualityControlLevelList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:QualityControlLevelType" name="qualityControlLevel"/>
+    </collection>
+    <collection get-method="getMethodList" set-method="setMethodList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:MethodType" name="method"/>
+    </collection>
+    <collection get-method="getSourceList" set-method="setSourceList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:SourceType" name="source"/>
+    </collection>
+    <collection get-method="getOffsetList" set-method="setOffsetList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:OffsetType" name="offset"/>
+    </collection>
+    <collection get-method="getSampleList" set-method="setSampleList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:SampleType" name="sample"/>
+    </collection>
+    <collection get-method="getCensorCodeList" set-method="setCensorCodeList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:CensorCodeType" name="censorCode"/>
+    </collection>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:VariableInfoType" class="org.cuahsi.waterml.VariableInfoType">
+    <collection get-method="getVariableCodeList" set-method="setVariableCodeList" create-type="java.util.ArrayList">
+      <structure type="org.cuahsi.waterml.VariableInfoType$VariableCode" name="variableCode">
+        <value style="text" get-method="getString" set-method="setString"/>
+        <value style="attribute" name="network" get-method="getNetwork" set-method="setNetwork" usage="optional"/>
+        <value style="attribute" name="vocabulary" get-method="getVocabulary" set-method="setVocabulary" usage="optional"/>
+        <value style="attribute" name="default" get-method="getDefault" set-method="setDefault" usage="optional"/>
+        <value style="attribute" name="variableID" get-method="getVariableID" set-method="setVariableID" usage="optional"/>
+      </structure>
+    </collection>
+    <value style="element" name="variableName" get-method="getVariableName" set-method="setVariableName" usage="optional"/>
+    <value style="element" name="variableDescription" get-method="getVariableDescription" set-method="setVariableDescription" usage="optional"/>
+    <value style="element" name="valueType" get-method="getValueType" set-method="setValueType" usage="optional"/>
+    <value style="element" name="dataType" get-method="getDataType" set-method="setDataType" usage="optional"/>
+    <value style="element" name="generalCategory" get-method="getGeneralCategory" set-method="setGeneralCategory" usage="optional"/>
+    <value style="element" name="sampleMedium" get-method="getSampleMedium" set-method="setSampleMedium" usage="optional"/>
+    <structure map-as="ns1:UnitsType" get-method="getUnit" set-method="setUnit" usage="optional" name="unit"/>
+    <structure type="org.cuahsi.waterml.Options" get-method="getOptions" set-method="setOptions" usage="optional"/>
+    <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:NoteType" name="note"/>
+    </collection>
+    <structure get-method="getRelated" set-method="setRelated" usage="optional" name="related">
+      <collection get-method="getRelatedList" set-method="setRelatedList" create-type="java.util.ArrayList">
+        <structure type="org.cuahsi.waterml.VariableInfoType$Related$RelatedInner">
+          <structure name="parentCode">
+            <value style="text" get-method="getParentCodeString" set-method="setParentCodeString"/>
+            <value style="attribute" name="network" get-method="getParentCodeNetwork" set-method="setParentCodeNetwork" usage="optional"/>
+            <value style="attribute" name="vocabulary" get-method="getParentCodeVocabulary" set-method="setParentCodeVocabulary" usage="optional"/>
+            <value style="attribute" name="default" get-method="getParentCodeDefault" set-method="setParentCodeDefault" usage="optional"/>
+          </structure>
+          <structure name="relatedCode">
+            <value style="text" get-method="getRelatedCodeString" set-method="setRelatedCodeString"/>
+            <value style="attribute" name="network" get-method="getRelatedCodeNetwork" set-method="setRelatedCodeNetwork" usage="optional"/>
+            <value style="attribute" name="vocabulary" get-method="getRelatedCodeVocabulary" set-method="setRelatedCodeVocabulary" usage="optional"/>
+            <value style="attribute" name="default" get-method="getRelatedCodeDefault" set-method="setRelatedCodeDefault" usage="optional"/>
+          </structure>
+        </structure>
+      </collection>
+    </structure>
+    <structure type="org.cuahsi.waterml.Extension" get-method="getExtension" set-method="setExtension" usage="optional"/>
+    <value style="element" name="noDataValue" get-method="getNoDataValue" set-method="setNoDataValue" usage="optional"/>
+    <structure get-method="getTimeScale" set-method="setTimeScale" usage="optional" name="timeScale">
+      <structure map-as="ns1:UnitsType" get-method="getUnit" set-method="setUnit" usage="optional" name="unit"/>
+      <value style="element" name="timeSpacing" get-method="getTimeSpacing" set-method="setTimeSpacing" usage="optional"/>
+      <value style="element" name="timeSupport" get-method="getTimeSupport" set-method="setTimeSupport" usage="optional"/>
+      <value style="attribute" name="isRegular" get-method="getIsRegular" set-method="setIsRegular" usage="optional"/>
+    </structure>
+    <value style="element" name="speciation" get-method="getSpeciation" set-method="setSpeciation" usage="optional"/>
+    <structure get-method="getCategories" set-method="setCategories" usage="optional" name="categories">
+      <collection get-method="getCategoryList" set-method="setCategoryList" usage="optional" create-type="java.util.ArrayList">
+        <structure type="org.cuahsi.waterml.VariableInfoType$Categories$Category" name="category">
+          <value style="element" name="dataValue" get-method="getDataValue" set-method="setDataValue"/>
+          <value style="element" name="description" get-method="getDescription" set-method="setDescription" usage="optional"/>
+          <value style="attribute" name="categoryID" get-method="getCategoryID" set-method="setCategoryID" usage="optional"/>
+        </structure>
+      </collection>
+    </structure>
+    <collection get-method="getVariablePropertyList" set-method="setVariablePropertyList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:PropertyType" name="variableProperty"/>
+    </collection>
+    <structure get-method="getOid" set-method="setOid" usage="optional">
+      <value style="attribute" name="oid" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getOid" set-method="setOid" usage="optional"/>
+    </structure>
+    <structure get-method="getMetadataTime" set-method="setMetadataTime" usage="optional">
+      <value style="attribute" name="metadataTime" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getMetadataTime" set-method="setMetadataTime" usage="optional"/>
+    </structure>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.Options" name="options">
+    <collection item-type="org.cuahsi.waterml.Option" get-method="getOptionList" set-method="setOptionList" usage="optional" create-type="java.util.ArrayList"/>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.Option" name="option">
+    <value style="text" get-method="getString" set-method="setString"/>
+    <value style="attribute" name="name" get-method="getName" set-method="setName" usage="optional"/>
+    <value style="attribute" name="optionID" get-method="getOptionID" set-method="setOptionID" usage="optional"/>
+    <value style="attribute" name="optionCode" get-method="getOptionCode" set-method="setOptionCode" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:QueryInfoType" class="org.cuahsi.waterml.QueryInfoType">
+    <value style="element" name="creationTime" get-method="getCreationTime" set-method="setCreationTime" usage="optional"/>
+    <value style="element" name="queryURL" get-method="getQueryURL" set-method="setQueryURL" usage="optional"/>
+    <structure get-method="getCriteria" set-method="setCriteria" usage="optional" name="criteria">
+      <structure get-method="getLocationParam" set-method="setLocationParam" usage="optional">
+        <value style="element" name="locationParam" get-method="getLocationParam" set-method="setLocationParam" usage="optional"/>
+        <value style="element" name="variableParam" get-method="getVariableParam" set-method="setVariableParam" usage="optional"/>
+        <structure get-method="getTimeParam" set-method="setTimeParam" usage="optional" name="timeParam">
+          <value style="element" name="beginDateTime" get-method="getBeginDateTime" set-method="setBeginDateTime" usage="optional"/>
+          <value style="element" name="endDateTime" get-method="getEndDateTime" set-method="setEndDateTime" usage="optional"/>
+        </structure>
+        <collection get-method="getParameterList" set-method="setParameterList" usage="optional" create-type="java.util.ArrayList">
+          <structure type="org.cuahsi.waterml.QueryInfoType$Criteria$Sequence$Parameter" name="parameter">
+            <value style="attribute" name="name" get-method="getName" set-method="setName" usage="optional"/>
+            <value style="attribute" name="value" get-method="getValue" set-method="setValue" usage="optional"/>
+          </structure>
+        </collection>
+      </structure>
+      <value style="attribute" name="MethodCalled" get-method="getMethodCalled" set-method="setMethodCalled" usage="optional"/>
+    </structure>
+    <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:NoteType" name="note"/>
+    </collection>
+    <structure type="org.cuahsi.waterml.Extension" get-method="getExtension" set-method="setExtension" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:DataSetInfoType" class="org.cuahsi.waterml.DataSetInfoType">
+    <structure map-as="ns1:SourceInfoType"/>
+    <value style="element" name="dataSetIdentifier" get-method="getDataSetIdentifier" set-method="setDataSetIdentifier"/>
+    <structure get-method="getTimeZoneInfo" set-method="setTimeZoneInfo" usage="optional" name="timeZoneInfo">
+      <structure map-as="ns1:TimeZoneType" get-method="getDefaultTimeZone" set-method="setDefaultTimeZone" usage="optional" name="defaultTimeZone"/>
+      <structure map-as="ns1:TimeZoneType" get-method="getDaylightSavingsTimeZone" set-method="setDaylightSavingsTimeZone" usage="optional" name="daylightSavingsTimeZone"/>
+      <value style="attribute" name="siteUsesDaylightSavingsTime" get-method="getSiteUsesDaylightSavingsTime" set-method="setSiteUsesDaylightSavingsTime" usage="optional"/>
+    </structure>
+    <value style="element" name="dataSetDescription" get-method="getDataSetDescription" set-method="setDataSetDescription"/>
+    <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:NoteType" name="note"/>
+    </collection>
+    <structure map-as="ns1:GeogLocationType" get-method="getDataSetLocation" set-method="setDataSetLocation" usage="optional" name="dataSetLocation"/>
+    <structure type="org.cuahsi.waterml.Extension" get-method="getExtension" set-method="setExtension" usage="optional"/>
+    <collection get-method="getDataSetPropertyList" set-method="setDataSetPropertyList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:PropertyType" name="dataSetProperty"/>
+    </collection>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimeZoneType" class="org.cuahsi.waterml.TimeZoneType">
+    <value style="attribute" name="zoneOffset" get-method="getZoneOffset" set-method="setZoneOffset"/>
+    <value style="attribute" name="zoneAbbreviation" get-method="getZoneAbbreviation" set-method="setZoneAbbreviation" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:DocumentationType" class="org.cuahsi.waterml.DocumentationType">
+    <value style="attribute" name="type" get-method="getType" set-method="setType" usage="optional"/>
+    <value style="attribute" name="href" get-method="getHref" set-method="setHref" usage="optional"/>
+    <value style="attribute" name="title" get-method="getTitle" set-method="setTitle" usage="optional"/>
+    <value style="attribute" name="show" get-method="getShow" set-method="setShow" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:SourceInfoType" class="org.cuahsi.waterml.SourceInfoType"/>
+  <mapping abstract="true" type-name="ns1:TimePeriodType" class="org.cuahsi.waterml.TimePeriodType">
+    <value style="element" name="beginDateTime" get-method="getBeginDateTime" set-method="setBeginDateTime"/>
+    <value style="element" name="endDateTime" get-method="getEndDateTime" set-method="setEndDateTime"/>
+    <value style="element" name="beginDateTimeUTC" get-method="getBeginDateTimeUTC" set-method="setBeginDateTimeUTC" usage="optional"/>
+    <value style="element" name="endDateTimeUTC" get-method="getEndDateTimeUTC" set-method="setEndDateTimeUTC" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimeIntervalType" class="org.cuahsi.waterml.TimeIntervalType">
+    <structure map-as="ns1:TimePeriodType"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimeSingleType" class="org.cuahsi.waterml.TimeSingleType">
+    <structure map-as="ns1:TimePeriodType"/>
+    <value style="element" name="timeSingle" get-method="getTimeSingle" set-method="setTimeSingle"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimePeriodRealTimeType" class="org.cuahsi.waterml.TimePeriodRealTimeType">
+    <structure map-as="ns1:TimePeriodType"/>
+    <value style="element" name="realTimeDataPeriod" get-method="getRealTimeDataPeriod" set-method="setRealTimeDataPeriod"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:GeogLocationType" class="org.cuahsi.waterml.GeogLocationType">
+    <value style="attribute" name="srs" get-method="getSrs" set-method="setSrs" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:LatLonPointType" class="org.cuahsi.waterml.LatLonPointType">
+    <structure map-as="ns1:GeogLocationType"/>
+    <value style="element" name="latitude" get-method="getLatitude" set-method="setLatitude"/>
+    <value style="element" name="longitude" get-method="getLongitude" set-method="setLongitude"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:LatLonBoxType" class="org.cuahsi.waterml.LatLonBoxType">
+    <structure map-as="ns1:GeogLocationType"/>
+    <value style="element" name="south" get-method="getSouth" set-method="setSouth"/>
+    <value style="element" name="west" get-method="getWest" set-method="setWest"/>
+    <value style="element" name="north" get-method="getNorth" set-method="setNorth"/>
+    <value style="element" name="east" get-method="getEast" set-method="setEast"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:latLonLineString" class="org.cuahsi.waterml.LatLonLineString">
+    <structure map-as="ns1:GeogLocationType"/>
+    <collection get-method="getCoordLatLongList" set-method="setCoordLatLongList" create-type="java.util.ArrayList">
+      <structure map-as="ns1:CoordType" name="coordLatLong"/>
+    </collection>
+    <value style="attribute" name="zDirection" get-method="getZDirection" set-method="setZDirection" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:CoordType" class="org.cuahsi.waterml.CoordType">
+    <value style="element" name="latitude" get-method="getLatitude" set-method="setLatitude"/>
+    <value style="element" name="longitude" get-method="getLongitude" set-method="setLongitude"/>
+    <value style="element" name="Z" get-method="getZ" set-method="setZ" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:seriesCatalogType" class="org.cuahsi.waterml.SeriesCatalogType">
+    <collection get-method="getNoteList" set-method="setNoteList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:NoteType" name="note"/>
+    </collection>
+    <collection get-method="getSeryList" set-method="setSeryList" usage="optional" create-type="java.util.ArrayList">
+      <structure type="org.cuahsi.waterml.SeriesCatalogType$Series" name="series">
+        <value style="element" name="dataType" get-method="getDataType" set-method="setDataType" usage="optional"/>
+        <structure map-as="ns1:VariableInfoType" get-method="getVariable" set-method="setVariable" name="variable"/>
+        <structure get-method="getValueCount" set-method="setValueCount" usage="optional" name="valueCount">
+          <value style="text" get-method="getInt" set-method="setInt"/>
+          <value style="attribute" name="countIsEstimated" get-method="getCountIsEstimated" set-method="setCountIsEstimated" usage="optional"/>
+        </structure>
+        <structure map-as="ns1:TimePeriodType" get-method="getVariableTimeInterval" set-method="setVariableTimeInterval" name="variableTimeInterval"/>
+        <value style="element" name="valueType" get-method="getValueType" set-method="setValueType" usage="optional"/>
+        <value style="element" name="generalCategory" get-method="getGeneralCategory" set-method="setGeneralCategory" usage="optional"/>
+        <value style="element" name="sampleMedium" get-method="getSampleMedium" set-method="setSampleMedium" usage="optional"/>
+        <structure map-as="ns1:MethodType" get-method="getMethod" set-method="setMethod" usage="optional" name="method"/>
+        <structure map-as="ns1:SourceType" get-method="getSource" set-method="setSource" usage="optional" name="source"/>
+        <structure map-as="ns1:QualityControlLevelType" get-method="getQualityControlLevel" set-method="setQualityControlLevel" usage="optional" name="qualityControlLevel"/>
+        <collection get-method="getSeriesPropertyList" set-method="setSeriesPropertyList" usage="optional" create-type="java.util.ArrayList">
+          <structure map-as="ns1:PropertyType" name="seriesProperty"/>
+        </collection>
+      </structure>
+    </collection>
+    <collection get-method="getSeriesCatalogPropertyList" set-method="setSeriesCatalogPropertyList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:PropertyType" name="seriesCatalogProperty"/>
+    </collection>
+    <structure type="org.cuahsi.waterml.Extension" get-method="getExtension" set-method="setExtension" usage="optional"/>
+    <value style="attribute" name="menuGroupName" get-method="getMenuGroupName" set-method="setMenuGroupName" usage="optional"/>
+    <value style="attribute" name="serviceWsdl" get-method="getServiceWsdl" set-method="setServiceWsdl" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:QualifierType" class="org.cuahsi.waterml.QualifierType">
+    <value style="element" name="qualifierCode" get-method="getQualifierCode" set-method="setQualifierCode"/>
+    <value style="element" name="qualifierDescription" get-method="getQualifierDescription" set-method="setQualifierDescription" usage="optional"/>
+    <value style="attribute" name="qualifierID" get-method="getQualifierID" set-method="setQualifierID" usage="optional"/>
+    <structure get-method="getNetwork" set-method="setNetwork" usage="optional">
+      <value style="attribute" name="network" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getNetwork" set-method="setNetwork" usage="optional"/>
+    </structure>
+    <structure get-method="getVocabulary" set-method="setVocabulary" usage="optional">
+      <value style="attribute" name="vocabulary" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getVocabulary" set-method="setVocabulary" usage="optional"/>
+    </structure>
+    <structure get-method="getDefault" set-method="setDefault" usage="optional">
+      <value style="attribute" name="default" ns="http://www.cuahsi.org/waterML/1.1/" get-method="isDefault" set-method="setDefault" usage="optional"/>
+    </structure>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimeSeriesType" class="org.cuahsi.waterml.TimeSeriesType">
+    <structure map-as="ns1:SourceInfoType" get-method="getSourceInfo" set-method="setSourceInfo" name="sourceInfo"/>
+    <structure map-as="ns1:VariableInfoType" get-method="getVariable" set-method="setVariable" name="variable"/>
+    <collection get-method="getValueList" set-method="setValueList" create-type="java.util.ArrayList">
+      <structure map-as="ns1:TsValuesSingleVariableType" name="values"/>
+    </collection>
+    <value style="attribute" name="name" get-method="getName" set-method="setName" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:NoteType" class="org.cuahsi.waterml.NoteType">
+    <value style="text" get-method="getString" set-method="setString"/>
+    <value style="attribute" name="type" get-method="getType" set-method="setType" usage="optional"/>
+    <value style="attribute" name="href" get-method="getHref" set-method="setHref" usage="optional"/>
+    <value style="attribute" name="title" get-method="getTitle" set-method="setTitle" usage="optional"/>
+    <value style="attribute" name="show" get-method="getShow" set-method="setShow" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:ValueSingleVariable" class="org.cuahsi.waterml.ValueSingleVariable">
+    <value style="text" get-method="getDecimal" set-method="setDecimal"/>
+    <value style="attribute" name="qualifiers" get-method="getQualifiers" set-method="setQualifiers" usage="optional"/>
+    <value style="attribute" name="censorCode" get-method="getCensorCode" set-method="setCensorCode" usage="optional"/>
+    <value style="attribute" name="dateTime" get-method="getDateTime" set-method="setDateTime"/>
+    <value style="attribute" name="timeOffset" get-method="getTimeOffset" set-method="setTimeOffset" usage="optional"/>
+    <value style="attribute" name="dateTimeUTC" get-method="getDateTimeUTC" set-method="setDateTimeUTC" usage="optional"/>
+    <value style="attribute" name="methodID" get-method="getMethodID" set-method="setMethodID" usage="optional"/>
+    <value style="attribute" name="sourceID" get-method="getSourceID" set-method="setSourceID" usage="optional"/>
+    <value style="attribute" name="accuracyStdDev" get-method="getAccuracyStdDev" set-method="setAccuracyStdDev" usage="optional"/>
+    <value style="attribute" name="sampleID" get-method="getSampleID" set-method="setSampleID" usage="optional"/>
+    <value style="attribute" name="methodCode" get-method="getMethodCode" set-method="setMethodCode" usage="optional"/>
+    <value style="attribute" name="sourceCode" get-method="getSourceCode" set-method="setSourceCode" usage="optional"/>
+    <value style="attribute" name="labSampleCode" get-method="getLabSampleCode" set-method="setLabSampleCode" usage="optional"/>
+    <value style="attribute" name="offsetValue" get-method="getOffsetValue" set-method="setOffsetValue" usage="optional"/>
+    <value style="attribute" name="offsetTypeID" get-method="getOffsetTypeID" set-method="setOffsetTypeID" usage="optional"/>
+    <value style="attribute" name="offsetTypeCode" get-method="getOffsetTypeCode" set-method="setOffsetTypeCode" usage="optional"/>
+    <value style="attribute" name="codedVocabulary" get-method="getCodedVocabulary" set-method="setCodedVocabulary" usage="optional"/>
+    <value style="attribute" name="codedVocabularyTerm" get-method="getCodedVocabularyTerm" set-method="setCodedVocabularyTerm" usage="optional"/>
+    <value style="attribute" name="qualityControlLevelCode" get-method="getQualityControlLevelCode" set-method="setQualityControlLevelCode" usage="optional"/>
+    <structure get-method="getMetadataTime" set-method="setMetadataTime" usage="optional">
+      <value style="attribute" name="metadataTime" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getMetadataTime" set-method="setMetadataTime" usage="optional"/>
+    </structure>
+    <structure get-method="getOid" set-method="setOid" usage="optional">
+      <value style="attribute" name="oid" ns="http://www.cuahsi.org/waterML/1.1/" get-method="getOid" set-method="setOid" usage="optional"/>
+    </structure>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.Extension" name="extension"/>
+  <mapping abstract="true" type-name="ns1:VariablesResponseType" class="org.cuahsi.waterml.VariablesResponseType">
+    <structure map-as="ns1:QueryInfoType" get-method="getQueryInfo" set-method="setQueryInfo" usage="optional" name="queryInfo"/>
+    <collection get-method="getVariableList" set-method="setVariableList" name="variables" create-type="java.util.ArrayList">
+      <structure map-as="ns1:VariableInfoType" name="variable"/>
+    </collection>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.VariablesResponseType" name="variablesResponse">
+    <structure map-as="ns1:VariablesResponseType"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:TimeSeriesResponseType" class="org.cuahsi.waterml.TimeSeriesResponseType">
+    <structure map-as="ns1:QueryInfoType" get-method="getQueryInfo" set-method="setQueryInfo" usage="optional" name="queryInfo"/>
+    <collection get-method="getTimeSeryList" set-method="setTimeSeryList" create-type="java.util.ArrayList">
+      <structure map-as="ns1:TimeSeriesType" name="timeSeries"/>
+    </collection>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.TimeSeriesResponseType" name="timeSeriesResponse">
+    <structure map-as="ns1:TimeSeriesResponseType"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:SiteInfoResponseType" class="org.cuahsi.waterml.SiteInfoResponseType">
+    <structure map-as="ns1:QueryInfoType" get-method="getQueryInfo" set-method="setQueryInfo" usage="optional" name="queryInfo"/>
+    <collection get-method="getSiteList" set-method="setSiteList" usage="optional" create-type="java.util.ArrayList">
+      <structure type="org.cuahsi.waterml.SiteInfoResponseType$Site" name="site">
+        <structure map-as="ns1:SiteInfoType" get-method="getSiteInfo" set-method="setSiteInfo" name="siteInfo"/>
+        <collection get-method="getSeriesCatalogList" set-method="setSeriesCatalogList" usage="optional" create-type="java.util.ArrayList">
+          <structure map-as="ns1:seriesCatalogType" name="seriesCatalog"/>
+        </collection>
+        <collection item-type="org.cuahsi.waterml.Extension" get-method="getExtensionList" set-method="setExtensionList" usage="optional" create-type="java.util.ArrayList"/>
+      </structure>
+    </collection>
+  </mapping>
+  <mapping class="org.cuahsi.waterml.SiteInfoResponseType" name="sitesResponse">
+    <structure map-as="ns1:SiteInfoResponseType"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:UnitsType" class="org.cuahsi.waterml.UnitsType">
+    <value style="element" name="unitName" get-method="getUnitName" set-method="setUnitName" usage="optional"/>
+    <value style="element" name="unitDescription" get-method="getUnitDescription" set-method="setUnitDescription" usage="optional"/>
+    <value style="element" name="unitType" get-method="getUnitType" set-method="setUnitType" usage="optional"/>
+    <value style="element" name="unitAbbreviation" get-method="getUnitAbbreviation" set-method="setUnitAbbreviation" usage="optional"/>
+    <value style="element" name="unitCode" get-method="getUnitCode" set-method="setUnitCode"/>
+    <value style="attribute" name="unitID" get-method="getUnitID" set-method="setUnitID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:MethodType" class="org.cuahsi.waterml.MethodType">
+    <value style="element" name="methodCode" get-method="getMethodCode" set-method="setMethodCode" usage="optional"/>
+    <value style="element" name="methodDescription" get-method="getMethodDescription" set-method="setMethodDescription" usage="optional"/>
+    <value style="element" name="methodLink" get-method="getMethodLink" set-method="setMethodLink" usage="optional"/>
+    <value style="attribute" name="methodID" get-method="getMethodID" set-method="setMethodID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:SampleType" class="org.cuahsi.waterml.SampleType">
+    <value style="element" name="labSampleCode" get-method="getLabSampleCode" set-method="setLabSampleCode" usage="optional"/>
+    <value style="element" name="sampleType" get-method="getSampleType" set-method="setSampleType" usage="optional"/>
+    <structure map-as="ns1:LabMethodType" get-method="getLabMethod" set-method="setLabMethod" usage="optional" name="labMethod"/>
+    <value style="attribute" name="sampleID" get-method="getSampleID" set-method="setSampleID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:LabMethodType" class="org.cuahsi.waterml.LabMethodType">
+    <value style="element" name="labCode" get-method="getLabCode" set-method="setLabCode"/>
+    <value style="element" name="labName" get-method="getLabName" set-method="setLabName" usage="optional"/>
+    <value style="element" name="labOrganization" get-method="getLabOrganization" set-method="setLabOrganization" usage="optional"/>
+    <value style="element" name="labMethodName" get-method="getLabMethodName" set-method="setLabMethodName" usage="optional"/>
+    <value style="element" name="labMethodDescription" get-method="getLabMethodDescription" set-method="setLabMethodDescription" usage="optional"/>
+    <value style="element" name="labMethodLink" get-method="getLabMethodLink" set-method="setLabMethodLink" usage="optional"/>
+    <structure map-as="ns1:SourceType" get-method="getLabSourceDetails" set-method="setLabSourceDetails" usage="optional" name="labSourceDetails"/>
+    <value style="attribute" name="labMethodID" get-method="getLabMethodID" set-method="setLabMethodID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:CensorCodeType" class="org.cuahsi.waterml.CensorCodeType">
+    <value style="element" name="censorCode" get-method="getCensorCode" set-method="setCensorCode"/>
+    <value style="element" name="censorCodeDescription" get-method="getCensorCodeDescription" set-method="setCensorCodeDescription"/>
+    <value style="attribute" name="censorCodeID" get-method="getCensorCodeID" set-method="setCensorCodeID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:SourceType" class="org.cuahsi.waterml.SourceType">
+    <value style="element" name="sourceCode" get-method="getSourceCode" set-method="setSourceCode" usage="optional"/>
+    <value style="element" name="organization" get-method="getOrganization" set-method="setOrganization" usage="optional"/>
+    <value style="element" name="sourceDescription" get-method="getSourceDescription" set-method="setSourceDescription" usage="optional"/>
+    <structure map-as="ns1:MetaDataType" get-method="getMetadata" set-method="setMetadata" usage="optional" name="metadata"/>
+    <collection get-method="getContactInformationList" set-method="setContactInformationList" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="ns1:ContactInformationType" name="contactInformation"/>
+    </collection>
+    <collection get-method="getSourceLinkList" set-method="setSourceLinkList" usage="optional" create-type="java.util.ArrayList">
+      <value style="element" name="sourceLink" type="java.lang.String"/>
+    </collection>
+    <value style="element" name="citation" get-method="getCitation" set-method="setCitation" usage="optional"/>
+    <value style="attribute" name="sourceID" get-method="getSourceID" set-method="setSourceID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:ContactInformationType" class="org.cuahsi.waterml.ContactInformationType">
+    <value style="element" name="contactName" get-method="getContactName" set-method="setContactName"/>
+    <value style="element" name="typeOfContact" get-method="getTypeOfContact" set-method="setTypeOfContact" usage="optional"/>
+    <collection get-method="getEmailList" set-method="setEmailList" usage="optional" create-type="java.util.ArrayList">
+      <value style="element" name="email" type="java.lang.String"/>
+    </collection>
+    <collection get-method="getPhoneList" set-method="setPhoneList" usage="optional" create-type="java.util.ArrayList">
+      <value style="element" name="phone" type="java.lang.String"/>
+    </collection>
+    <structure usage="optional" name="address"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:MetaDataType" class="org.cuahsi.waterml.MetaDataType">
+    <value style="element" name="topicCategory" get-method="getTopicCategory" set-method="setTopicCategory" usage="optional"/>
+    <value style="element" name="title" get-method="getTitle" set-method="setTitle" usage="optional"/>
+    <value style="element" name="abstract" get-method="getAbstract" set-method="setAbstract" usage="optional"/>
+    <value style="element" name="profileVersion" get-method="getProfileVersion" set-method="setProfileVersion" usage="optional"/>
+    <value style="element" name="metadataLink" get-method="getMetadataLink" set-method="setMetadataLink" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:QualityControlLevelType" class="org.cuahsi.waterml.QualityControlLevelType">
+    <value style="element" name="qualityControlLevelCode" get-method="getQualityControlLevelCode" set-method="setQualityControlLevelCode" usage="optional"/>
+    <value style="element" name="definition" get-method="getDefinition" set-method="setDefinition" usage="optional"/>
+    <value style="element" name="explanation" get-method="getExplanation" set-method="setExplanation" usage="optional"/>
+    <value style="attribute" name="qualityControlLevelID" get-method="getQualityControlLevelID" set-method="setQualityControlLevelID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:OffsetType" class="org.cuahsi.waterml.OffsetType">
+    <value style="element" name="offsetTypeCode" get-method="getOffsetTypeCode" set-method="setOffsetTypeCode" usage="optional"/>
+    <value style="element" name="offsetValue" get-method="getOffsetValue" set-method="setOffsetValue" usage="optional"/>
+    <value style="element" name="offsetDescription" get-method="getOffsetDescription" set-method="setOffsetDescription" usage="optional"/>
+    <structure map-as="ns1:UnitsType" get-method="getUnit" set-method="setUnit" name="unit"/>
+    <value style="element" name="offsetIsVertical" get-method="isOffsetIsVertical" set-method="setOffsetIsVertical"/>
+    <value style="element" name="offsetAzimuthDegrees" get-method="getOffsetAzimuthDegrees" set-method="setOffsetAzimuthDegrees" usage="optional"/>
+    <value style="attribute" name="offsetTypeID" get-method="getOffsetTypeID" set-method="setOffsetTypeID" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns1:PropertyType" class="org.cuahsi.waterml.PropertyType">
+    <value style="text" get-method="getString" set-method="setString"/>
+    <value style="attribute" name="type" get-method="getType" set-method="setType" usage="optional"/>
+    <value style="attribute" name="name" get-method="getName" set-method="setName"/>
+    <value style="attribute" name="uri" get-method="getUri" set-method="setUri" usage="optional"/>
+  </mapping>
+</binding>

@@ -1,0 +1,294 @@
+package de.ifgi.envision.eps.service;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.log4j.Logger;
+import org.n52.oxf.OXFException;
+import org.n52.oxf.owsCommon.ExceptionReport;
+import org.n52.oxf.owsCommon.capabilities.Operation;
+import org.n52.oxf.serviceAdapters.OperationResult;
+import org.n52.oxf.serviceAdapters.ParameterContainer;
+import org.n52.oxf.serviceAdapters.sos.SOSAdapter;
+import org.n52.oxf.util.IOHelper;
+
+import de.ifgi.envision.eps.producer.SOSEventProducer;
+
+public class SOS {
+
+	private static org.apache.log4j.Logger log = Logger.getLogger(SOS.class);
+	
+	//private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+	
+	private SOSEventProducer eventProducer;
+	private HttpClient httpClient;
+	private HttpGet httpGet;
+	private OperationResult observationCollection;
+	private String serviceURL;
+	private ParameterContainer paramCon;
+	private SOSAdapter sosAdapter;
+	private String serviceVersion;
+	private String offering;
+	private String observedProperty;
+	private String request;
+	private Date beginPosition;
+	private Date endPosition;
+	
+	private SimpleDateFormat formatter;
+	
+	private TimeUnit timeUnit;
+	private int numberOfTimeUnits;
+	
+	private ScheduledFuture<?> futureTask;
+	
+	
+//	public SOS(String serviceURL, String serviceVersion, String offering, String observedProperty, 
+//			Date begin, Date end, String[] procedure, String foi) {
+//		this.url = serviceURL;
+//		this.sosAdapter = new SOSAdapter(serviceVersion);
+//		this.eventProducer = new SOSEventProducer();
+//		this.paramCon = new ParameterContainer();
+//		
+//		 try {
+//			paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_SERVICE_PARAMETER, SOSAdapter.SERVICE_TYPE);
+//			paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_VERSION_PARAMETER, serviceVersion);
+//			this.serviceVersion = serviceVersion;
+//			
+//			 // Offering
+//			if (offering != null) {
+//				paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_OFFERING_PARAMETER, offering);
+//			}
+//	        // Version 1.0.0 - HARDCODED
+//			paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_RESPONSE_FORMAT_PARAMETER, "text/xml;subtype=\"om/1.0.0\"");
+//	        // Observed property
+//	        if (observedProperty != null) {
+//	        	paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_OBSERVED_PROPERTY_PARAMETER, observedProperty);
+//	        }
+//	        // Procedure
+//	        if (procedure != null) {
+//	        	paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_PROCEDURE_PARAMETER, procedure);
+//	        }
+//	        // Event time
+//	        if (begin != null && end != null) {
+//	        	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//	        	String eventTime = formatter.format(begin) + "/" + formatter.format(end);
+//	        	paramCon.addParameterShell(ISOSRequestBuilder.GET_OBSERVATION_EVENT_TIME_PARAMETER, eventTime);
+//	        }
+//	        this.request = SOSRequestBuilderFactory.generateRequestBuilder(serviceVersion).buildGetObservationRequest(paramCon);
+//	 	} catch (OXFException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//		}
+//	}
+	
+	public SOS(String serviceURL, String offering, String observedProperty) {
+		this.eventProducer = new SOSEventProducer(serviceURL);
+		this.serviceURL = serviceURL;
+		this.offering = offering;
+		this.observedProperty = observedProperty;
+		// Date format like 2008-03-01T17:44:15+00:00
+		formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//		endPosition = new Date();
+//		Calendar cal = Calendar.getInstance();
+//		cal.setTime(endPosition);
+//		cal.add(Calendar.MINUTE, -1);
+//		beginPosition = cal.getTime();
+		
+		// The getObservations request for latest observations
+//		request = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+//				"<GetObservation xmlns=\"http://www.opengis.net/sos/1.0\" " +
+//				"xmlns:ows=\"http://www.opengis.net/ows/1.1\" " +
+//				"xmlns:gml=\"http://www.opengis.net/gml\" " +
+//				"xmlns:ogc=\"http://www.opengis.net/ogc\" " +
+//				"xmlns:om=\"http://www.opengis.net/om/1.0\" " +
+//				"xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
+//				"xsi:schemaLocation=\"http://www.opengis.net/sos/1.0 http://schemas.opengis.net/sos/1.0.0/sosGetObservation.xsd\" " +
+//				"service=\"SOS\" version=\"1.0.0\" srsName=\"urn:ogc:def:crs:EPSG::4326\">" +
+//				"<offering>" + offering + "</offering>" +
+//				"<!-- Latest observations -->" +
+//				"<eventTime>" +
+//				    "<ogc:TM_Equals>" +
+//				      "<ogc:PropertyName>om:samplingTime</ogc:PropertyName>" +
+//				      "<gml:TimeInstant>" +
+//				        "<gml:timePosition>latest</gml:timePosition>" +
+//				      "</gml:TimeInstant>" +
+//				    "</ogc:TM_Equals>" +
+//				 "</eventTime>" +
+//				 "<!-- Latest observations -->" +
+//				 "<observedProperty>" + observedProperty + "</observedProperty>" +
+//				 "<responseFormat>text/xml;subtype=&quot;om/1.0.0&quot;</responseFormat>" +
+//				 "</GetObservation>";
+	}
+	
+	
+	public Date getEndPosition() {
+		return endPosition;
+	}
+	
+	public void setEndPosition(Date endPosition) {
+		this.endPosition = endPosition;
+	}
+	
+	/*
+	 * Requests the latest observations from the SOS
+	 */
+	public OperationResult getLatestObservations() {
+		InputStream is = null;
+		OperationResult or = null;
+		try {
+			// Set request using a time period with oldest timestamp as beginPosition and unknown endPosition
+			setGetObservationsRequest(timeUnit, numberOfTimeUnits);
+			is = IOHelper.sendPostMessage(serviceURL, request);
+			log.info("Request sent: ".concat(request));
+			// Get response
+			or = new OperationResult(is, null, request);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return or;
+	}
+	
+	
+	public OperationResult getObservations(String serviceURL, String request) {
+		InputStream is = null;
+		OperationResult or = null;
+		try {
+			is = IOHelper.sendPostMessage(serviceURL, request);
+			log.info("Request sent: ".concat(request));
+			// Get response
+			or = new OperationResult(is, null, request);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return or;
+	}
+	
+//	public OperationResult getObservations() {
+//		Operation op = null;
+//		OperationResult result = null;
+//		try {
+//			log.info("Sent request: " + this.request);
+//	        // now use this ParameterContainer as an input for the 'doOperation' method of your SOSAdapter. What you receive is an OperationResult.
+//			op = new Operation("GetObservation", "http://GET_URL_not_used", serviceURL);
+//			result = sosAdapter.doOperation(op, paramCon);
+//		} catch (OXFException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ExceptionReport e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return result;
+//	}
+
+	
+	public SOSEventProducer getEventProducer() {
+		return eventProducer;
+	}
+	
+	private int setTimeUnitAddition(TimeUnit timeUnit) {
+		int calendarUnit = -1;
+		switch (timeUnit) {
+		case SECONDS:	
+			calendarUnit = Calendar.SECOND;			
+			break;
+		case MINUTES:
+			calendarUnit = Calendar.MINUTE;
+			break;
+		case HOURS:
+			calendarUnit = Calendar.HOUR_OF_DAY;
+			break;
+		case DAYS:
+			calendarUnit = Calendar.DAY_OF_YEAR;
+			break;
+		default:
+			log.error("The time unit specified is not allowed!");
+			break;
+		}
+		return calendarUnit;
+	}
+	
+	
+	private void setGetObservationsRequest(TimeUnit timeUnit, Integer numberOfTimeUnits) {
+		int calendarUnit = setTimeUnitAddition(timeUnit);
+		Calendar cal = Calendar.getInstance();
+		// endPosition initialized at current system time
+		// TODO endPosition initialized at sensor locale
+		endPosition = new Date();
+		cal.setTime(endPosition);
+		cal.add(calendarUnit, -numberOfTimeUnits);
+		beginPosition = cal.getTime();		
+		
+		request = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+				"<GetObservation xmlns=\"http://www.opengis.net/sos/1.0\" " +
+				"xmlns:ows=\"http://www.opengis.net/ows/1.1\" " +
+				"xmlns:gml=\"http://www.opengis.net/gml\" " +
+				"xmlns:ogc=\"http://www.opengis.net/ogc\" " +
+				"xmlns:om=\"http://www.opengis.net/om/1.0\" " +
+				"xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
+				"xsi:schemaLocation=\"http://www.opengis.net/sos/1.0 http://schemas.opengis.net/sos/1.0.0/sosGetObservation.xsd\" " +
+				"service=\"SOS\" version=\"1.0.0\" srsName=\"urn:ogc:def:crs:EPSG::4326\">" +
+				"<offering>" + offering + "</offering>" +
+				"<eventTime>" +
+					"<ogc:TM_During>" +
+						"<ogc:PropertyName>om:samplingTime</ogc:PropertyName>" +
+						"<gml:TimePeriod>" +
+							"<gml:beginPosition>" + formatter.format(beginPosition) + "</gml:beginPosition>" +
+							"<gml:endPosition>" + formatter.format(endPosition) + "</gml:endPosition>" +
+						"</gml:TimePeriod>" +
+					"</ogc:TM_During>" +
+				"</eventTime>" +
+				 "<observedProperty>" + observedProperty + "</observedProperty>" +
+				 "<responseFormat>text/xml;subtype=&quot;om/1.0.0&quot;</responseFormat>" +
+				 "</GetObservation>";
+	}
+	
+	
+	/*
+	 * Schedules a task periodically every [numberOfTimeUnits] [timeUnit]
+	 */
+	public ScheduledFuture<?> scheduleGetResponseBody(TimeUnit timeUnit, Integer numberOfTimeUnits) {
+		this.timeUnit = timeUnit;
+		this.numberOfTimeUnits = numberOfTimeUnits;
+		final Callable<OperationResult> callableGetObservations = new Callable<OperationResult>() {
+			public OperationResult call() {
+				OperationResult op = getLatestObservations();
+				return op;
+			}
+		};
+		final Runnable getObservationsTask = new Runnable() {
+			public void run() {
+				OperationResult res = null;
+				try {
+					res = callableGetObservations.call();
+					eventProducer.parseXml(request, res);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (OutOfMemoryError e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		futureTask = ServiceManager.getServiceManager().getScheduler().scheduleAtFixedRate(getObservationsTask, 0, numberOfTimeUnits, timeUnit);
+		return futureTask;
+	}
+	
+	public ScheduledFuture<?> getFutureTask() {
+		return futureTask;
+	}
+}

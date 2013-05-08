@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/envision~runtime/!svn/ver/547/services/EventProcessingService/test/de/ifgi/envision/eps/core
+END
+EventProcessingServiceProviderTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/envision~runtime/!svn/ver/1270/services/EventProcessingService/test/de/ifgi/envision/eps/core/EventProcessingServiceProviderTest.java
+END
+TestEPSManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/envision~runtime/!svn/ver/1168/services/EventProcessingService/test/de/ifgi/envision/eps/core/TestEPSManager.java
+END

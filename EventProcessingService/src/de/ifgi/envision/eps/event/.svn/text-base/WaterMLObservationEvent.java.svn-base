@@ -1,0 +1,46 @@
+package de.ifgi.envision.eps.event;
+
+import java.net.URL;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+import org.joda.time.Interval;
+
+import com.espertech.esper.client.EventType;
+import com.vividsolutions.jts.geom.Geometry;
+
+import de.ifgi.envision.eps.model.org.cuahsi.waterml.ValueSingleVariable;
+
+public class WaterMLObservationEvent extends ObservationEvent {
+
+	//private final static String eventTypeString = "http://purl.org/event-obs/eventType#WaterMLObservationEvent";
+	
+	//private double value;
+	
+	private String unitOfMeasure;
+	
+	//private Sensor observer;
+
+	
+	public WaterMLObservationEvent(Interval temporalLocation, List<Participant> participants, 
+			Geometry spatialLocation, Sensor observer, Double value, String observedProperty, String unitOfMeasure, String source) {
+		super(temporalLocation, participants, spatialLocation, observer, value, observedProperty, source);
+		//super.eventType = eventTypeString;
+		this.unitOfMeasure = unitOfMeasure;
+	}
+	
+	public Sensor getObserver() {
+		return observer;
+	}
+
+//	public Object getValue() {
+//		return (Double) value;
+//	}
+
+	public String getUnitOfMeasure() {
+		return unitOfMeasure;
+	}
+
+	
+}

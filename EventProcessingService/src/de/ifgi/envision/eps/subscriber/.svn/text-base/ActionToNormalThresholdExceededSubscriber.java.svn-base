@@ -1,0 +1,44 @@
+package de.ifgi.envision.eps.subscriber;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.apache.log4j.Logger;
+import org.openrdf.repository.RepositoryException;
+
+import com.vividsolutions.jts.geom.Geometry;
+
+import de.ifgi.envision.eps.event.WaterMLObservationEvent;
+import de.ifgi.envision.eps.push.EventPusher;
+import de.ifgi.envision.eps.push.MessageBuilder;
+
+public class ActionToNormalThresholdExceededSubscriber {
+	private static org.apache.log4j.Logger log = Logger.getLogger(ActionToNormalThresholdExceededSubscriber.class);
+	
+	private static String EVENT_TYPE = "http://purl.org/ifgi/water/flood#ActionStageToNormalStage";
+	private MessageBuilder builder;
+	private EventPusher pusher = new EventPusher();
+	
+	public void update(WaterMLObservationEvent a, WaterMLObservationEvent b) {
+//		log.info("***Action stage to normal stage at " + b.getObserver().getName());
+//		System.out.printf("Gage height: %.2f %s\n", b.getValue(), b.getUnitOfMeasure());
+//		System.out.printf("Timestamp: %s\n", b.getTemporalLocation().toString());
+//		System.out.printf("Location: %s\n\n", b.getSpatialLocation().toString());
+//		String message = "***Action stage to normal stage at " + b.getObserver().getName() + "***\n" +
+//		"Gage height: " + b.getValue() + b.getUnitOfMeasure() + "\n" +
+//		"Timestamp: " +  b.getTemporalLocation().toString() + "\n" +
+//		"Location: " + b.getSpatialLocation().toString() + "\n";
+		try {
+			pusher.run();
+			builder = new MessageBuilder();
+			String message = builder.createRDFMessage(b.getSpatialLocation(), b.getTemporalLocation(), b.getObservedProperty(), EVENT_TYPE);
+			pusher.push(message);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
