@@ -51,18 +51,16 @@ public class IGDEALThesisRealTimeDataTest {
 					"</gml:Point>" +
 				"</sa:position>" +
 			"</sa:SamplingPoint>";
-	
-//	private static String BEGIN_DATE = "2006-01-01T18:00:00.000";
-//	private static String END_DATE = "2007-01-01T18:00:00.000";
+
 	
 	/*
 	 * Iron Gates scenario
 	 */
 	// High and low water level patterns for Pancevo
-	private static String PATTERN_BELOW_3000 = "SELECT obs1, obs2 FROM pattern[every (obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value < 3000) -> obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value < 65.5)) ] WHERE obs2.time.between(obs1.time, obs1.time.plus(23 hours 59 min))";
-	private static String PATTERN_BETWEEN_3000_3500 = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value between 3000 and 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value > 69.81)] WHERE obs2.time.between(obs1.time, obs1.time.plus(23 hours 59 min))";
-	private static String PATTERN_ABOVE_3500_HIGH = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value > 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value > 71.0)] WHERE obs2.time.between(obs1.time, obs1.time.plus(23 hours 59 min))";
-	private static String PATTERN_ABOVE_3500_LOW = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value > 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value < 66.5)] WHERE obs2.time.between(obs1.time, obs1.time.plus(23 hours 59 min))";
+	private static String PATTERN_BELOW_3000 = "SELECT obs1, obs2 FROM pattern[every (obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value < 3000) -> obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value < 65.5)) ] WHERE obs2.time.between(obs1.time, obs1.time.plus(10 seconds))";
+	private static String PATTERN_BETWEEN_3000_3500 = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value between 3000 and 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value > 69.81)] WHERE obs2.time.between(obs1.time, obs1.time.plus(10 seconds))";
+	private static String PATTERN_ABOVE_3500_HIGH = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value > 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value > 71.0)] WHERE obs2.time.between(obs1.time, obs1.time.plus(10 seconds))";
+	private static String PATTERN_ABOVE_3500_LOW = "SELECT obs1, obs2 FROM pattern[every obs1=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterflow', value > 3500) -> every obs2=ObservationEvent(observer.id = 'urn:ogc:object:feature:Sensor:CSRO:csro-sensor-0003', observedProperty = 'urn:ogc:def:phenomenon:OGC:1.0.30:waterlevel', value < 66.5)] WHERE obs2.time.between(obs1.time, obs1.time.plus(10 seconds))";
 	
 	// Event types
 	private static String HIGH_WATER_LEVEL_EVENT_TYPE = "http://wsmls.googlecode.com/svn/trunk/application/EventType/IronGates/IronGatesEventTypes.rdf#HighWaterLevel";
@@ -209,7 +207,7 @@ public class IGDEALThesisRealTimeDataTest {
 			
 			// 3.1 Insert waterflow observations
 			// Simulation of a waterflow increase - every 10 seconds, 40 m3/s more during 3 minutes, starting from 2900 m3/s
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 			Date dateTimestamp = new Date();
 			Calendar calCounter = Calendar.getInstance();
 			calCounter.setTime(dateTimestamp);
@@ -256,7 +254,8 @@ public class IGDEALThesisRealTimeDataTest {
 				value = String.valueOf((Double.valueOf(value) - 0.5));
 			}
 			
-			
+			Date currentDate = new Date();
+			log.info("***REAL-TIME EXPERIMENT DATA RETRIEVAL TIMESTAMP: " + currentDate.toString() + " ***");
 			
 			// 4.1 Schedule waterflow service request
 			RegisterService registerService = new RegisterService();
@@ -266,6 +265,8 @@ public class IGDEALThesisRealTimeDataTest {
 			registerService.setTimeUnit("SECONDS");
 			registerService.setNumberOfTimeUnits(10);
 			stub.registerService(registerService);
+			
+			Thread.sleep(500);
 			
 			// 4.2 Schedule waterlevel service request
 			registerService.setServiceURL(SERVICE_URL);

@@ -22,7 +22,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
+import org.joda.time.Days;
+import org.joda.time.Duration;
+import org.joda.time.Hours;
 import org.joda.time.Interval;
+import org.joda.time.Seconds;
 import org.n52.oxf.serviceAdapters.OperationResult;
 import org.n52.oxf.util.IOHelper;
 import org.n52.oxf.xmlbeans.parser.XMLHandlingException;
@@ -324,12 +328,17 @@ public class MessageBuilder {
 				Calendar calendar = Calendar.getInstance();
 				Date endDate = temporalLocation.getEnd().toDate();	
 				calendar.setTime(endDate);
-				calendar.add(Calendar.DAY_OF_MONTH, 1);
+				Duration duration = temporalLocation.toDuration();
+				Seconds seconds = duration.toStandardSeconds();
+				
+				calendar.add(Calendar.SECOND, seconds.getSeconds());
+//				calendar.add(Calendar.DAY_OF_MONTH, 1);
 				endDate = calendar.getTime();
 				end = formatter.format(endDate);
-				calendar.add(Calendar.DAY_OF_MONTH, -2);
+				calendar.add(Calendar.SECOND, -(seconds.getSeconds()*2));
+				//calendar.add(Calendar.DAY_OF_MONTH, -2);
 				Date beginDate = calendar.getTime();
-				begin = formatter.format(beginDate);
+				begin = formatter.format(beginDate);	
 			}
 			else {
 				// Durative event

@@ -1,10 +1,15 @@
 package de.ifgi.envision.eps.push;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.ConfirmListener;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
@@ -77,7 +82,10 @@ public class EventPusher {
 	public void push(String message) {
 		try {
 			channel = connection.createChannel();
-			channel.basicPublish(EXCHANGE, "", null, message.getBytes());
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("timestamp", new Date().toString());
+			channel.basicPublish(EXCHANGE, "", new AMQP.BasicProperties.Builder().headers(map).build(), message.getBytes());
+			channel.confirmSelect();
 			//System.out.println(" [x] Sent '" + message + "'");
 			channel.close();
 		} catch (IOException e) {
