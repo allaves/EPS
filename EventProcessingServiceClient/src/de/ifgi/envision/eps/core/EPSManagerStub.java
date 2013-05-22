@@ -190,7 +190,7 @@
      */
     public EPSManagerStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/axis2/services/EPSManager.EPSManagerHttpSoap12Endpoint/" );
+                    this(configurationContext,"http://giv-llaves.uni-muenster.de:8080/axis2/services/EPSManager.EPSManagerHttpSoap12Endpoint/" );
                 
     }
 
@@ -199,7 +199,7 @@
      */
     public EPSManagerStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/axis2/services/EPSManager.EPSManagerHttpSoap12Endpoint/" );
+                    this("http://giv-llaves.uni-muenster.de:8080/axis2/services/EPSManager.EPSManagerHttpSoap12Endpoint/" );
                 
     }
 
