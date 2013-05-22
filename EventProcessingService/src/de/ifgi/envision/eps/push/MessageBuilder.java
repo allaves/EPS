@@ -62,7 +62,7 @@ public class MessageBuilder {
 	private static org.apache.log4j.Logger log = Logger.getLogger(MessageBuilder.class);
 	
 	// Event Processing Agent - Service URL
-	private static String EPS_URL = "http://giv-wfs.uni-muenster.de/axis2/services/EPSManager";
+	private static String EPS_URL = "http://giv-llaves.uni-muenster.de:8080/axis2/services/EPSManager";
 	
 	// namespaces
 	private static String NS_BASE = "http://purl.org/ifgi/eabs-instance#";
